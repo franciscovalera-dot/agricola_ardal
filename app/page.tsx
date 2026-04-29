@@ -1,101 +1,57 @@
-import Image from "next/image";
+import { Hero } from "./components/Hero";
+import { TextSection } from "./components/TextSection";
+import { OrchardImage } from "./components/OrchardImage";
+import { ContactCTA } from "./components/ContactCTA";
+import { CTAButton } from "./components/CTAButton";
 
-export default function Home() {
+export default function AlbaricoquesPage() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+    <main className="min-h-screen bg-cream">
+      <Hero
+        imageSrc="/images/Albaricoque 2.svg"
+        imageAlt="Albaricoque"
+        gradientClassName="bg-gradient-to-b from-ardalYellow via-ardalYellowSoft to-cream to-60%"
+        imageShadowClassName="drop-shadow-[0_25px_30px_rgba(168,69,27,0.35)]"
+      />
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+      <TextSection title="Albaricoques cultivados en Murcia">
+        <p>
+          Cultivamos albaricoques en el corazón de la huerta murciana, donde el
+          sol y la tierra dan a nuestra fruta su sabor característico.
+          Producimos pensando en la calidad, el aroma y la dulzura de cada
+          ejemplar que llega a tu mesa.
+        </p>
+        <CTAButton />
+      </TextSection>
+
+      <TextSection title="Sobre nuestros albaricoques" id="sobre">
+        <p>
+          Seleccionamos cuidadosamente cada variedad para garantizar un fruto de
+          piel suave, pulpa jugosa y un equilibrio perfecto entre dulzor y
+          acidez. Trabajamos siguiendo las técnicas tradicionales del cultivo
+          mediterráneo, combinadas con prácticas modernas de control de calidad.
+        </p>
+        <p>
+          Nuestros albaricoques se recogen en su punto óptimo de maduración para
+          asegurar el mejor sabor y una textura inmejorable.
+        </p>
+      </TextSection>
+
+      <OrchardImage />
+
+      <TextSection title="Cultivo en el campo de Murcia" id="cultivo">
+        <p>
+          Nuestras fincas se encuentran en zonas privilegiadas de la Región de
+          Murcia, donde el clima cálido y seco crea las condiciones ideales para
+          el desarrollo del albaricoque. Cuidamos cada árbol durante todo el
+          año, respetando los ciclos naturales de la planta.
+        </p>
+      </TextSection>
+
+      <ContactCTA
+        title="¿Quieres más información sobre nuestros albaricoques?"
+        description="Contacta con Agrícola Ardal para conocer mejor nuestra producción de albaricoques cultivados en Murcia."
+      />
+    </main>
   );
 }
