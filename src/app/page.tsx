@@ -2,78 +2,88 @@ import Image from 'next/image';
 import Link from 'next/link';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import WhyChooseSection from '@/components/WhyChooseSection';
 import { FALLBACK_IMAGES } from '@/lib/images';
 import { CONTACTO } from '@/lib/contacto';
 
 const productos = [
   {
     nombre: 'Albaricoque',
+    href: '/albaricoques',
     descripcion:
       'De piel dorada y pulpa jugosa. Recogido en su punto justo de maduración para conservar todo su aroma.',
-    imagen: FALLBACK_IMAGES.albaricoque,
+    imagen: '/images/Albaricoque 2.svg',
   },
   {
     nombre: 'Nectarina',
+    href: '/nectarinas',
     descripcion:
       'Dulce, firme y con un toque ácido. Una fruta de hueso que conquista por su sabor intenso y su frescura.',
-    imagen: FALLBACK_IMAGES.nectarina,
+    imagen: '/images/Nectarina.svg',
   },
   {
     nombre: 'Naranja',
+    href: '/naranjas',
     descripcion:
       'Cultivada al sol de Murcia, llena de zumo y vitamina. Sabor clásico, fresco y honesto.',
-    imagen: FALLBACK_IMAGES.naranja,
+    imagen: '/images/Naranja.svg',
   },
   {
     nombre: 'Limones',
+    href: '/limones',
     descripcion:
       'Aromáticos, ácidos y siempre listos para realzar cualquier receta. Cosechados todo el año.',
-    imagen: FALLBACK_IMAGES.limon,
+    imagen: '/images/Limon.svg',
   },
 ];
 
 const ventajas = [
   {
     titulo: 'Tradición agrícola',
-    texto: 'Tres generaciones cuidando la misma tierra con el conocimiento heredado de nuestra familia.',
-    icono: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6">
-        <path d="M12 2v20" />
-        <path d="M12 8c-3 0-6-2-6-5 3 0 6 2 6 5z" />
-        <path d="M12 12c3 0 6-2 6-5-3 0-6 2-6 5z" />
-        <path d="M12 16c-3 0-6-2-6-5 3 0 6 2 6 5z" />
-      </svg>
-    ),
+    texto: 'Nuestra forma de trabajar nace del vinculo con el campo y de una manera de cultivar basada en la experiencia, el esfuerzo y el respeto por la tierra.',
+    icono: '/images/Icon1.svg',
   },
   {
     titulo: 'Producto de Murcia',
     texto: 'Origen 100% local. Trazabilidad total: del árbol a tu mesa, sin intermediarios.',
-    icono: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6">
-        <path d="M12 22s7-7.5 7-13a7 7 0 1 0-14 0c0 5.5 7 13 7 13z" />
-        <circle cx="12" cy="9" r="2.5" />
-      </svg>
-    ),
+    icono: '/images/Icon2.svg',
   },
   {
     titulo: 'Calidad y cuidado',
     texto: 'Selección manual y control en cada etapa. Solo la mejor fruta lleva nuestro nombre.',
-    icono: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6">
-        <path d="M20 7 9 18l-5-5" />
-      </svg>
-    ),
+    icono: '/images/Icon3.svg',
   },
   {
     titulo: 'Compromiso con el origen',
     texto: 'Cuidamos la tierra que nos da de comer con métodos respetuosos y sostenibles.',
-    icono: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6">
-        <path d="M12 2a10 10 0 1 0 10 10" />
-        <path d="M12 12a5 5 0 0 1 5-5h5" />
-        <path d="M12 12a5 5 0 0 0-5-5H2" />
-      </svg>
-    ),
+    icono: '/images/Icon4.svg',
+  },
+];
+
+const ventajasHome = [
+  {
+    titulo: 'Tradicion agricola',
+    texto:
+      'Nuestra forma de trabajar nace del vinculo con el campo y de una manera de cultivar basada en la experiencia, el esfuerzo y el respeto por la tierra.',
+    icono: '/images/Icon1.svg',
+  },
+  {
+    titulo: 'Producto de Murcia',
+    texto:
+      'Cultivamos en Mula, Murcia, en un entorno donde la agricultura forma parte del paisaje y de la identidad del territorio.',
+    icono: '/images/Icon2.svg',
+  },
+  {
+    titulo: 'Cuidado en cada cultivo',
+    texto:
+      'Cada producto requiere atencion, seguimiento y dedicacion. Por eso trabajamos cada cosecha con criterio y compromiso con la calidad.',
+    icono: '/images/Icon3.svg',
+  },
+  {
+    titulo: 'Compromiso con el origen',
+    texto:
+      'Creemos en una agricultura conectada con su entorno, con sus tiempos y con el valor de hacer las cosas bien desde el principio.',
+    icono: '/images/Icon4.svg',
   },
 ];
 
@@ -153,39 +163,88 @@ export default function HomePage() {
             </Link>
           </div>
         </div>
+        <div className="hidden">
+          <h2 className="font-heading text-[44px] leading-[1] text-[#0B2407] md:text-[64px]">
+            Contacta con Agrícola Ardal
+          </h2>
+          <p className="hidden">
+            Si deseas más información sobre nuestros productos o sobre nuestra actividad agrícola, puedes ponerte en contacto con nosotros. Estaremos encantados de atenderte.
+          </p>
+
+          <div className="mx-auto mt-10 grid max-w-[480px] gap-4 sm:grid-cols-[0.9fr,1.35fr] md:mt-12">
+            <a
+              href={CONTACTO.telefonoHref}
+              className="flex items-center gap-3 rounded-[10px] border border-[#b5dc6a] bg-[#93CC3A] px-4 py-4 text-left text-[#0B2407] transition-colors duration-300 hover:bg-[#9dd545]"
+            >
+              <span className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full text-[#0B2407]">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="h-4 w-4">
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.35 1.85.59 2.81.72A2 2 0 0 1 22 16.92z" />
+                </svg>
+              </span>
+              <span className="font-body text-[13px] leading-none">{CONTACTO.telefono}</span>
+            </a>
+
+            <a
+              href={CONTACTO.direccionUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-3 rounded-[10px] border border-[#b5dc6a] bg-[#93CC3A] px-4 py-4 text-left text-[#0B2407] transition-colors duration-300 hover:bg-[#9dd545]"
+            >
+              <span className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full text-[#0B2407]">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="h-4 w-4">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                  <circle cx="12" cy="10" r="3" />
+                </svg>
+              </span>
+              <span className="font-body text-[12px] leading-[1.25] whitespace-pre-line">{CONTACTO.direccion}</span>
+            </a>
+          </div>
+        </div>
       </section>
 
       {/* NUESTROS PRODUCTOS */}
       <section className="bg-blanco">
-        <div className="max-w-7xl mx-auto px-6 md:px-10 pb-20 md:pb-28">
-          <div className="text-center max-w-2xl mx-auto mb-16 md:mb-20">
-            <h2 className="font-heading text-4xl md:text-6xl text-negro leading-tight">
-              Nuestros productos
+        <div className="max-w-[1500px] mx-auto px-6 md:px-10 pb-20 md:pb-28">
+          <div className="text-center max-w-[420px] mx-auto mt-12 md:mt-16 mb-16 md:mb-20">
+            <h2 className="font-heading text-[54px] leading-[0.95] text-[#0B2407] md:text-[72px]">
+              Nuestros
+              <br />
+              productos
             </h2>
-            <p className="font-body mt-6 text-base md:text-lg text-negro/70 leading-relaxed">
+            <p className="hidden">
               Trabajamos únicamente variedades de fruta cultivada en Murcia, recogidas en su punto óptimo
               de sabor y propiedades nutricionales para llegar a tu mesa con la frescura del campo.
             </p>
+            <p className="hidden">
+              Trabajamos diferentes variedades de fruta cultivada en Murcia, adaptÃ¡ndonos a los ciclos naturales
+              de cada cultivo y poniendo el foco en la calidad, la recolecciÃ³n y el cuidado del campo.
+            </p>
+            <p className="font-body mt-4 max-w-[340px] mx-auto text-[14px] leading-[1.35] text-[#0B2407] md:max-w-[360px]">
+              Trabajamos diferentes variedades de fruta cultivada en Murcia, adaptándonos a los ciclos naturales
+              de cada cultivo y poniendo el foco en la calidad, la recolección y el cuidado del campo.
+            </p>
           </div>
 
-          <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
+          <div className="grid gap-y-16 sm:grid-cols-2 sm:gap-x-10 lg:grid-cols-4 lg:gap-x-12 lg:gap-y-0">
             {productos.map((p) => (
               <article key={p.nombre} className="text-center">
-                <div className="relative aspect-square w-full mb-6 flex items-center justify-center">
-                  <Image
-                    src={p.imagen}
-                    alt={p.nombre}
-                    fill
-                    sizes="(max-width: 768px) 100vw, 25vw"
-                    className="object-contain"
-                  />
-                </div>
-                <h3 className="font-heading text-2xl md:text-3xl text-negro mb-3">
-                  {p.nombre}
-                </h3>
-                <p className="font-body text-sm md:text-base text-negro/70 leading-relaxed px-2">
-                  {p.descripcion}
-                </p>
+                <Link href={p.href} className="group flex flex-col items-center">
+                  <div className="relative h-56 w-56 transition-transform duration-300 ease-out group-hover:scale-125 md:h-72 md:w-72 lg:h-[18rem] lg:w-[18rem] xl:h-[19rem] xl:w-[19rem]">
+                    <Image
+                      src={p.imagen}
+                      alt={p.nombre}
+                      fill
+                      sizes="(max-width: 768px) 100vw, 25vw"
+                      className="object-contain"
+                    />
+                  </div>
+                  <h3 className="mt-6 font-heading text-[28px] leading-none text-negro transition-colors duration-300 group-hover:text-verde-oscuro md:text-[34px]">
+                    {p.nombre}
+                  </h3>
+                  <p className="mt-3 max-w-[220px] font-body text-[14px] leading-[1.25] text-negro/75 md:max-w-[240px]">
+                    {p.descripcion}
+                  </p>
+                </Link>
               </article>
             ))}
           </div>
@@ -193,39 +252,46 @@ export default function HomePage() {
       </section>
 
       {/* POR QUÉ ELEGIR */}
-      <section className="bg-crema/40">
-        <div className="max-w-7xl mx-auto px-6 md:px-10 py-24 md:py-32 grid gap-14 md:grid-cols-2 items-center">
-          <div className="relative">
-            <h2 className="font-heading text-4xl md:text-6xl lg:text-7xl text-verde-oscuro leading-[1.05] max-w-md">
+      <WhyChooseSection />
+      <section className="hidden">
+        <div className="mx-auto grid max-w-[1500px] items-center gap-14 px-6 py-24 md:px-10 md:py-32 lg:grid-cols-[1.05fr_1fr] lg:gap-24">
+          <div className="relative lg:pl-20">
+            <h2 className="relative z-10 max-w-[520px] font-heading text-[58px] leading-[0.95] text-[#062B05] md:text-[82px] lg:text-[92px]">
               Por qué elegir <br className="hidden md:block" />
               Agrícola Ardal
             </h2>
-            <svg
-              viewBox="0 0 200 80"
-              className="mt-8 w-48 h-20 text-verde-oscuro/70"
-              fill="currentColor"
-              aria-hidden="true"
-            >
-              <path d="M10 60 C 40 20, 90 20, 130 50 C 100 55, 60 60, 30 70 Z" opacity="0.7" />
-              <path d="M70 50 C 100 15, 150 15, 190 35 C 160 45, 120 50, 90 60 Z" opacity="0.5" />
-              <path d="M50 55 L 120 35" stroke="currentColor" strokeWidth="1" fill="none" />
-            </svg>
+            <div className="relative z-0 -mt-8 h-64 w-full max-w-[760px] md:-mt-12 md:h-80 lg:-mt-16 lg:h-88 lg:max-w-[880px]">
+              <Image
+                src="/images/Hoja limonero 1.svg"
+                alt=""
+                fill
+                aria-hidden
+                className="object-contain object-left-bottom"
+              />
+            </div>
           </div>
 
-          <ul className="space-y-4">
-            {ventajas.map((v) => (
+          <ul className="space-y-6">
+            {ventajasHome.map((v) => (
               <li
                 key={v.titulo}
-                className="bg-blanco rounded-md px-6 py-5 flex items-start gap-5 shadow-[0_1px_2px_rgba(0,0,0,0.04)]"
+                className="flex items-center gap-8 rounded-[18px] bg-blanco px-7 py-5 shadow-[0_1px_2px_rgba(0,0,0,0.02)]"
               >
-                <span className="flex-shrink-0 w-12 h-12 rounded-full bg-verde-lima/15 text-verde-oscuro flex items-center justify-center">
-                  {v.icono}
+                <span className="relative flex h-14 w-14 flex-shrink-0 items-center justify-center rounded-[10px] bg-[#EEF0EA]">
+                  <Image
+                    src={v.icono}
+                    alt=""
+                    fill
+                    aria-hidden
+                    sizes="56px"
+                    className="object-contain p-3"
+                  />
                 </span>
                 <div>
-                  <h3 className="font-heading text-xl md:text-2xl text-verde-oscuro mb-1">
+                  <h3 className="font-body text-[20px] font-bold leading-none text-[#062B05] md:text-[24px]">
                     {v.titulo}
                   </h3>
-                  <p className="font-body text-sm md:text-base text-negro/70 leading-relaxed">
+                  <p className="mt-2 max-w-[470px] font-body text-[12px] leading-[1.25] text-[#062B05] md:text-[13px]">
                     {v.texto}
                   </p>
                 </div>
@@ -237,32 +303,58 @@ export default function HomePage() {
 
       {/* EMPRESA VINCULADA AL CAMPO */}
       <section className="bg-crema/40">
-        <div className="max-w-7xl mx-auto px-6 md:px-10 pb-24 md:pb-32">
-          <div className="relative grid gap-6 md:grid-cols-12 items-stretch">
-            <div className="relative md:col-span-7 aspect-[4/3] md:aspect-auto md:min-h-[420px] overflow-hidden rounded-md">
-              <Image
-                src={FALLBACK_IMAGES.campoMurcia}
-                alt="Pueblo de Murcia con su entorno natural"
-                fill
-                sizes="(max-width: 768px) 100vw, 60vw"
-                className="object-cover"
-              />
+        <div className="max-w-[1440px] pl-12 pr-6 md:pr-12 pb-28 md:pb-36">
+          <div className="relative">
+            <div className="relative aspect-[16/11.5] overflow-hidden rounded-[22px] md:aspect-[16/10.4] lg:aspect-[16/8.8]">
+              <div className="absolute inset-y-0 left-[-2%] w-[104%] md:left-[-4%] md:w-[108%] lg:left-[-5%] lg:w-[110%]">
+                <Image
+                  src="/images/Pueblo.png"
+                  alt="Pueblo de Murcia con su entorno natural"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 90vw"
+                  className="object-cover object-left"
+                />
+              </div>
             </div>
 
-            <div className="md:col-span-5 md:-ml-20 md:self-center bg-verde-oscuro text-blanco rounded-md p-8 md:p-10 lg:p-12 relative z-10">
-              <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl leading-[1.1]">
+            <div className="relative z-10 mx-4 -mt-12 rounded-[22px] bg-[#062B05] px-8 py-7 text-blanco shadow-[0_18px_50px_rgba(6,43,5,0.18)] md:absolute md:-right-[33%] md:top-[54%] md:mx-0 md:mt-0 md:w-[50%] md:-translate-y-1/2 md:px-11 md:py-9 lg:-right-[36%] lg:w-[54%] lg:px-12 lg:py-10 xl:-right-[37%]">
+              <h2 className="max-w-none font-heading text-[40px] leading-[0.98] text-[#FCF9F0] md:text-[56px] lg:text-[64px]">
                 Una empresa vinculada al campo y a su entorno
               </h2>
-              <p className="font-body mt-6 text-sm md:text-base text-blanco/85 leading-relaxed">
+              <p className="hidden">
                 En Agrícola Ardal nos sentimos parte del paisaje que nos rodea. Trabajamos con respeto
                 por la tierra que nos da de comer, manteniendo un vínculo estrecho con los pueblos,
                 las personas y las costumbres de Murcia.
               </p>
               <Link
                 href="/nosotros"
-                className="inline-block mt-8 font-body uppercase tracking-widest text-xs text-verde-lima border-b border-verde-lima pb-1 hover:text-blanco hover:border-blanco transition-colors duration-300"
+                className="hidden"
               >
                 Conoce nuestra historia
+              </Link>
+              <p className="font-body mt-7 max-w-[29rem] text-[13px] leading-[1.34] text-[#FCF9F0]/88 md:max-w-[31rem] md:text-[14px]">
+                Agrícola Ardal es una empresa agrícola de Mula, Murcia, centrada en el cultivo de fruta y en el valor de una producción arraigada al territorio. Nuestra actividad se desarrolla en una zona donde el paisaje agrícola sigue formando parte de la vida, de la economía y de la identidad local.
+              </p>
+              <p className="font-body mt-5 max-w-[27rem] text-[13px] leading-[1.34] text-[#FCF9F0]/88 md:max-w-[29rem] md:text-[14px]">
+                Trabajamos desde el compromiso con la tierra, con una visión basada en la calidad del producto y en la continuidad de una forma de cultivar ligada al campo de siempre.
+              </p>
+              <Link
+                href="/nosotros"
+                className="group mt-8 inline-flex items-center gap-3 rounded-full bg-[#8DC83E] py-2 pl-5 pr-2 font-body text-sm text-[#0B2407] transition-opacity duration-300 hover:opacity-90"
+              >
+                Conócenos
+                <span className="flex h-9 w-9 items-center justify-center rounded-full bg-[#0B2407] text-[#8DC83E] transition-transform duration-300 group-hover:translate-x-1">
+                  <svg
+                    width="18"
+                    height="18"
+                    viewBox="0 0 26 26"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path d="M19.1193 18.106L19.1193 6.03538L7.04868 6.03538" stroke="currentColor" strokeWidth="1.5" />
+                    <path d="M19.1184 6.03457L6.03448 19.1185" stroke="currentColor" strokeWidth="1.5" />
+                  </svg>
+                </span>
               </Link>
             </div>
           </div>
@@ -270,40 +362,44 @@ export default function HomePage() {
       </section>
 
       {/* CONTACTO */}
-      <section className="bg-verde-lima/35">
-        <div className="max-w-5xl mx-auto px-6 md:px-10 py-20 md:py-28 text-center">
-          <div className="relative w-24 h-24 md:w-28 md:h-28 mx-auto mb-6 rounded-full overflow-hidden">
+      <section className="bg-[#8DC83E]">
+        <div className="mx-auto max-w-7xl px-6 py-20 text-center md:px-10 md:py-24">
+          <div className="relative mx-auto mb-8 h-36 w-44 md:mb-10 md:h-48 md:w-56">
             <Image
-              src={FALLBACK_IMAGES.flor}
-              alt="Flor de almendro"
+              src="/images/Group 798.svg"
+              alt=""
               fill
-              sizes="120px"
-              className="object-cover"
+              sizes="224px"
+              className="object-contain"
             />
           </div>
-          <h2 className="font-heading text-4xl md:text-6xl text-negro leading-tight">
+          <h2 className="font-heading text-[48px] leading-[1] text-[#0B2407] md:whitespace-nowrap md:text-[72px] lg:text-[82px]">
             Contacta con Agrícola Ardal
           </h2>
-          <p className="font-body mt-6 text-base md:text-lg text-negro/75 max-w-2xl mx-auto leading-relaxed">
-            Estamos encantados de saber de ti. Si tienes una pregunta, quieres trabajar con nosotros
+          <p className="hidden">
+            Si deseas mÃ¡s informaciÃ³n sobre nuestros productos o sobre nuestra actividad agrÃ­cola, puedes ponerte en contacto con nosotros. Estaremos encantados de atenderte.
             o probar nuestra fruta, escríbenos o llámanos.
           </p>
 
-          <div className="mt-12 grid gap-4 sm:grid-cols-2 max-w-2xl mx-auto">
+          <p className="mx-auto mt-6 max-w-[520px] font-body text-[16px] leading-[1.35] text-[#0B2407] md:mt-7 md:text-[17px]">
+            Si deseas mas informacion sobre nuestros productos o sobre nuestra actividad agricola, puedes ponerte en contacto con nosotros. Estaremos encantados de atenderte.
+          </p>
+
+          <div className="mx-auto mt-11 grid max-w-[600px] gap-5 sm:grid-cols-[0.9fr,1.35fr] md:mt-14">
             <a
               href={CONTACTO.telefonoHref}
-              className="bg-blanco rounded-md px-6 py-5 flex items-center gap-4 text-left hover:shadow-md transition-shadow duration-300"
+              className="flex items-center gap-4 rounded-[10px] border border-[#b5dc6a] bg-[#83BA38] px-5 py-5 text-left text-[#0B2407] transition-colors duration-300 hover:bg-[#8DC83E]"
             >
-              <span className="flex-shrink-0 w-11 h-11 rounded-full bg-verde-oscuro/10 text-verde-oscuro flex items-center justify-center">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5">
+              <span className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full text-[#0B2407]">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="h-5 w-5">
                   <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.35 1.85.59 2.81.72A2 2 0 0 1 22 16.92z" />
                 </svg>
               </span>
-              <div>
-                <p className="font-body uppercase tracking-widest text-[10px] text-negro/50">
+              <div className="font-body text-[15px] leading-none md:text-[16px]">
+                <p className="hidden">
                   Teléfono
                 </p>
-                <p className="font-body text-base text-negro">
+                <p>
                   {CONTACTO.telefono}
                 </p>
               </div>
@@ -313,19 +409,19 @@ export default function HomePage() {
               href={CONTACTO.direccionUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-blanco rounded-md px-6 py-5 flex items-center gap-4 text-left hover:shadow-md transition-shadow duration-300"
+              className="flex items-center gap-4 rounded-[10px] border border-[#b5dc6a] bg-[#83BA38] px-5 py-5 text-left text-[#0B2407] transition-colors duration-300 hover:bg-[#8DC83E]"
             >
-              <span className="flex-shrink-0 w-11 h-11 rounded-full bg-verde-oscuro/10 text-verde-oscuro flex items-center justify-center">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5">
+              <span className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full text-[#0B2407]">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="h-5 w-5">
                   <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
                   <circle cx="12" cy="10" r="3" />
                 </svg>
               </span>
-              <div>
-                <p className="font-body uppercase tracking-widest text-[10px] text-negro/50">
+              <div className="font-body text-[14px] leading-[1.25] md:text-[15px]">
+                <p className="hidden">
                   Dirección
                 </p>
-                <p className="font-body text-sm text-negro whitespace-pre-line">
+                <p className="whitespace-pre-line">
                   {CONTACTO.direccion}
                 </p>
               </div>

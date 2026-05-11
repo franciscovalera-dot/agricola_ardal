@@ -84,7 +84,7 @@ export default function NosotrosPage() {
 
       <section
         aria-label="Sobre Agrícola Ardal"
-        className="relative h-screen w-full overflow-hidden"
+        className="relative h-[calc(100vh-72px)] w-full overflow-hidden"
       >
         <Image
           src="/images/Cerezos.png"
@@ -102,7 +102,7 @@ export default function NosotrosPage() {
 
       <section className="bg-cream px-6 py-20 md:px-12 md:py-28">
         <div className="mx-auto grid max-w-[1600px] gap-10 md:grid-cols-[2fr_3fr] md:items-center md:gap-32">
-          <div className="space-y-4 text-base leading-relaxed text-ink md:max-w-md">
+          <div className="space-y-4 text-xl leading-relaxed text-ink md:max-w-md">
             <p>
               Agrícola Ardal es una empresa agrícola ubicada en Mula, Murcia,
               centrada en el cultivo de fruta y en el valor de una producción
@@ -137,7 +137,7 @@ export default function NosotrosPage() {
             <h2 className="font-heading text-4xl leading-tight text-ink text-balance md:text-5xl">
               Una agricultura basada en el cuidado y la constancia
             </h2>
-            <div className="space-y-4 text-base leading-relaxed text-ink">
+            <div className="space-y-4 text-xl leading-relaxed text-ink">
               <p>
                 En Agrícola Ardal entendemos la agricultura como un proceso
                 que requiere tiempo, dedicación y conocimiento del terreno.
@@ -213,12 +213,12 @@ export default function NosotrosPage() {
             <h2 className="font-heading text-[64px] leading-tight">
               Calidad desde el origen
             </h2>
-            <p className="text-base leading-relaxed">
+            <p className="text-xl leading-relaxed">
               En Agrícola Ardal trabajamos con el objetivo de ofrecer fruta
               cultivada en Murcia con un estándar de calidad basado en el
               cuidado del producto desde el campo.
             </p>
-            <p className="text-base leading-relaxed">
+            <p className="text-xl leading-relaxed">
               Nuestro enfoque no se basa únicamente en producir, sino en
               hacerlo bien: controlando el cultivo, respetando los tiempos de
               cada fruta y manteniendo una línea de trabajo coherente con el

@@ -53,60 +53,78 @@ export default function ProductosPage() {
     <main className="min-h-screen bg-cream">
       <Navbar />
 
-      <section className="pt-16 md:pt-24 pb-20 md:pb-28 bg-cream">
-        <div className="max-w-7xl mx-auto px-6 md:px-10">
-          <p className="font-body uppercase tracking-[0.3em] text-xs text-verde-oscuro mb-4">
-            Catálogo
-          </p>
-          <h1 className="font-heading text-5xl md:text-7xl lg:text-8xl text-verde-oscuro leading-[1.05] max-w-4xl">
+      {/* HERO */}
+      <section className="relative h-[calc(100vh-72px)] w-full overflow-hidden">
+        <Image
+          src="/images/arbol-nectarina.jpg"
+          alt="Árbol de nectarinas en Mula, Murcia"
+          fill
+          priority
+          className="object-cover object-center"
+        />
+        <div className="absolute inset-0 bg-ink/20" />
+        <div className="absolute inset-0 flex items-end">
+          <h1 className="w-full px-2 pb-6 text-center font-heading text-[clamp(2.5rem,11vw,160px)] leading-[0.95] text-cream drop-shadow-[0_2px_16px_rgba(0,0,0,0.4)] md:pb-10">
             Nuestros productos
           </h1>
-          <p className="font-body mt-8 max-w-2xl text-lg md:text-xl text-negro/80 leading-relaxed">
-            Cultivamos cada fruto en su temporada y lo recogemos en su punto.
-            Esta es la familia de sabores que nace en el campo del Ardal, en
-            Mula, Murcia.
+        </div>
+      </section>
+
+      {/* INTRO */}
+      <section className="bg-cream px-6 py-20 md:px-12 md:py-28">
+        <div className="mx-auto max-w-[1600px]">
+          <p className="font-body text-xl leading-relaxed text-ink max-w-2xl">
+            Cultivamos cada fruto en su temporada y lo recogemos en su punto
+            justo de maduración. Esta es la familia de sabores que nace en el
+            campo del Ardal, en Mula, Murcia.
           </p>
         </div>
       </section>
 
-      <section className="pb-24 md:pb-32">
-        <div className="max-w-7xl mx-auto px-6 md:px-10">
-          <ul className="grid gap-8 md:gap-10 sm:grid-cols-2 lg:grid-cols-4">
+      {/* GRID */}
+      <section className="bg-cream px-6 pb-28 md:px-12 md:pb-36">
+        <div className="mx-auto max-w-[1600px]">
+          <ul className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8">
             {productos.map((p) => (
               <li key={p.href}>
                 <Link href={p.href} className="group block">
                   <div
-                    className={`relative aspect-[4/5] overflow-hidden rounded-2xl transition-transform duration-500 group-hover:-translate-y-1 ${p.bgClassName}`}
+                    className={`relative aspect-[3/4] overflow-hidden rounded-[22px] ${p.bgClassName} transition-transform duration-500 ease-out group-hover:-translate-y-2`}
                   >
                     <Image
                       src={p.imageSrc}
                       alt={p.imageAlt}
                       fill
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                      className="object-contain p-8 transition-transform duration-700 group-hover:scale-110"
+                      className="object-contain p-10 transition-transform duration-700 ease-out group-hover:scale-110"
                     />
                   </div>
-                  <div className="pt-5">
-                    <h2 className="font-heading text-2xl md:text-3xl text-negro group-hover:text-verde-oscuro transition-colors duration-300">
+                  <div className="pt-6">
+                    <h2 className="font-heading text-[34px] leading-none text-ink transition-colors duration-300 group-hover:text-verde-oscuro">
                       {p.title}
                     </h2>
-                    <p className="font-body mt-2 text-sm md:text-base text-negro/70 leading-relaxed">
+                    <p className="font-body mt-3 text-base leading-relaxed text-ink/65">
                       {p.descripcion}
                     </p>
-                    <span className="font-body mt-4 inline-flex items-center gap-2 text-xs uppercase tracking-widest text-verde-oscuro group-hover:text-verde-lima transition-colors">
+                    <span className="mt-5 inline-flex items-center gap-2 font-body text-xs uppercase tracking-widest text-verde-oscuro transition-colors duration-300 group-hover:text-ardalGreen">
                       Ver más
                       <svg
-                        viewBox="0 0 24 24"
+                        width="16"
+                        height="16"
+                        viewBox="0 0 26 26"
                         fill="none"
-                        stroke="currentColor"
-                        strokeWidth="1.6"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1"
                         aria-hidden
                       >
-                        <path d="M5 12h14" />
-                        <path d="m12 5 7 7-7 7" />
+                        <path
+                          d="M19.1193 18.106L19.1193 6.03538L7.04868 6.03538"
+                          stroke="currentColor"
+                          strokeWidth="1.5"
+                        />
+                        <path
+                          d="M19.1184 6.03457L6.03448 19.1185"
+                          stroke="currentColor"
+                          strokeWidth="1.5"
+                        />
                       </svg>
                     </span>
                   </div>

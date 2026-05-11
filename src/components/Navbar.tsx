@@ -1,4 +1,7 @@
+'use client';
+
 import Link from 'next/link';
+import { useEffect, useRef, useState } from 'react';
 
 const navItems = [
   { label: 'Inicio', href: '/' },
@@ -8,8 +11,34 @@ const navItems = [
 ];
 
 export default function Navbar() {
+  const [hidden, setHidden] = useState(false);
+  const lastScrollY = useRef(0);
+
+  useEffect(() => {
+    const onScroll = () => {
+      const currentY = window.scrollY;
+
+      if (currentY <= 0) {
+        setHidden(false);
+      } else if (currentY > lastScrollY.current && currentY > 72) {
+        setHidden(true);
+      } else if (currentY < lastScrollY.current) {
+        setHidden(false);
+      }
+
+      lastScrollY.current = currentY;
+    };
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
   return (
-    <header className="relative z-30 bg-verde-noche border-b border-blanco/10 text-blanco">
+    <header
+      className={`sticky top-0 z-30 bg-verde-noche border-b border-blanco/10 text-blanco transition-transform duration-300 ease-in-out ${
+        hidden ? '-translate-y-full' : 'translate-y-0'
+      }`}
+    >
       <nav className="w-full px-6 md:px-10 py-5 flex items-center justify-between">
         <Link href="/" className="font-heading text-2xl md:text-3xl tracking-tight">
           Agrícola Ardal
