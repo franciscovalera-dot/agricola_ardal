@@ -156,8 +156,8 @@ export default function NosotrosPage() {
         </div>
       </section>
 
-      <section className="relative mt-20 w-full bg-cream md:mt-32 lg:mt-44">
-        <div className="relative aspect-[1920/1280] w-full">
+      <section className="relative mt-16 w-full bg-cream md:mt-32 lg:mt-44">
+        <div className="relative w-full md:aspect-[1920/1280]">
           <Image
             src="/images/mano-naranja.png"
             alt="Mano cogiendo una naranja entre muchas"
@@ -165,12 +165,13 @@ export default function NosotrosPage() {
             className="object-cover"
             sizes="100vw"
           />
-          <div className="absolute inset-0 z-10 px-6 md:px-12">
-            <div className="mx-auto grid max-w-[1600px] gap-10 md:grid-cols-2 md:items-start md:gap-24 md:pl-24 lg:pl-40">
+          <div className="absolute inset-0 bg-cream/60 md:hidden" />
+          <div className="relative z-10 px-6 py-10 md:absolute md:inset-0 md:px-12 md:py-0">
+            <div className="mx-auto grid max-w-[1600px] gap-6 md:grid-cols-2 md:items-start md:gap-24 md:pl-24 lg:pl-40">
               <h2 className="font-heading text-[36px] sm:text-[48px] md:text-[56px] lg:text-[64px] leading-tight text-ink text-balance md:-mt-16 md:pl-8 lg:-mt-24 lg:pl-16">
                 Un entorno agrícola con identidad propia
               </h2>
-              <div className="space-y-4 text-xl leading-relaxed text-ink md:-mt-16 md:max-w-xl md:pl-8 lg:-mt-24 lg:pl-16">
+              <div className="space-y-4 text-base leading-relaxed text-ink sm:text-lg md:-mt-16 md:max-w-xl md:pl-8 md:text-xl lg:-mt-24 lg:pl-16">
                 <p>
                   Nuestra actividad se desarrolla en la zona del Ardal, en el
                   término municipal de Mula, Murcia. Se trata de un entorno
