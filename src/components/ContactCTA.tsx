@@ -51,9 +51,9 @@ export function ContactCTA({ title, description, variant = "light" }: ContactCTA
     : "bg-ardalGreenDark text-ink hover:bg-ink hover:text-ardalGreenDark";
 
   return (
-    <section className="px-6 pb-24 pt-40 md:pt-48">
+    <section className="px-6 pb-16 pt-24 md:pb-20 md:pt-36">
       <div className="relative mx-auto max-w-4xl">
-        <div className="absolute -top-20 left-1/2 z-10 h-40 w-40 -translate-x-1/2 md:-top-[6.5rem] md:h-52 md:w-52">
+        <div className="absolute -top-16 left-1/2 z-10 h-32 w-32 -translate-x-1/2 sm:-top-20 sm:h-40 sm:w-40 md:-top-[6.5rem] md:h-52 md:w-52">
           <Image
             src="/images/Group 798.svg"
             alt=""
@@ -62,9 +62,9 @@ export function ContactCTA({ title, description, variant = "light" }: ContactCTA
           />
         </div>
         <div
-          className={`rounded-2xl px-8 pb-12 pt-32 text-center md:px-12 md:pb-16 md:pt-40 ${containerBg} ${containerShadow}`}
+          className={`rounded-2xl px-6 pb-10 pt-24 text-center sm:px-8 sm:pb-12 sm:pt-28 md:px-12 md:pb-16 md:pt-36 ${containerBg} ${containerShadow}`}
         >
-          <h3 className={`mx-auto max-w-[720px] font-heading text-[64px] leading-tight text-balance ${titleColor}`}>
+          <h3 className={`mx-auto max-w-[720px] font-heading text-[34px] sm:text-[46px] md:text-[56px] lg:text-[64px] leading-tight text-balance ${titleColor}`}>
             {title}
           </h3>
           <p className={`mx-auto mt-4 max-w-sm text-base leading-relaxed ${descriptionColor}`}>

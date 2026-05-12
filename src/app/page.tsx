@@ -37,28 +37,6 @@ const productos = [
   },
 ];
 
-const ventajas = [
-  {
-    titulo: 'Tradición agrícola',
-    texto: 'Nuestra forma de trabajar nace del vinculo con el campo y de una manera de cultivar basada en la experiencia, el esfuerzo y el respeto por la tierra.',
-    icono: '/images/Icon1.svg',
-  },
-  {
-    titulo: 'Producto de Murcia',
-    texto: 'Origen 100% local. Trazabilidad total: del árbol a tu mesa, sin intermediarios.',
-    icono: '/images/Icon2.svg',
-  },
-  {
-    titulo: 'Calidad y cuidado',
-    texto: 'Selección manual y control en cada etapa. Solo la mejor fruta lleva nuestro nombre.',
-    icono: '/images/Icon3.svg',
-  },
-  {
-    titulo: 'Compromiso con el origen',
-    texto: 'Cuidamos la tierra que nos da de comer con métodos respetuosos y sostenibles.',
-    icono: '/images/Icon4.svg',
-  },
-];
 
 const ventajasHome = [
   {
@@ -105,18 +83,18 @@ export default function HomePage() {
 
         <div className="absolute inset-x-0 bottom-10 md:bottom-16 px-6 md:px-12">
           <div
-            className="w-full max-w-4xl rounded-[20px] p-10 md:p-14"
+            className="w-full max-w-4xl rounded-[20px] p-6 sm:p-8 md:p-10 lg:p-14"
             style={{ backgroundColor: 'rgba(252, 249, 240, 0.80)' }}
           >
             <h1
-              className="font-heading text-6xl md:text-[96px] leading-[1.05]"
-              style={{ color: '#0B2407' }}
+              className="animate-slide-in-left font-heading text-[38px] sm:text-5xl md:text-[96px] leading-[1.05]"
+              style={{ color: '#0B2407', animationDelay: '0ms' }}
             >
               Fruta cultivada en el campo de Murcia.
             </h1>
             <p
-              className="font-body mt-8 text-base leading-relaxed"
-              style={{ color: '#0B2407' }}
+              className="animate-slide-in-left font-body mt-8 text-base leading-relaxed max-w-xl"
+              style={{ color: '#0B2407', animationDelay: '120ms' }}
             >
               En Agrícola Ardal cultivamos fruta en Mula, Murcia, con una forma de trabajar ligada
               al campo, a la tierra y al respeto por cada cosecha. Apostamos por una producción
@@ -124,8 +102,8 @@ export default function HomePage() {
               producto y el valor de hacer las cosas como se han hecho toda la vida.
             </p>
             <p
-              className="font-body mt-4 text-base leading-relaxed"
-              style={{ color: '#0B2407' }}
+              className="animate-slide-in-left font-body mt-4 text-base leading-relaxed max-w-xl"
+              style={{ color: '#0B2407', animationDelay: '220ms' }}
             >
               Nuestro entorno forma parte del paisaje agrícola del Ardal, una zona muleña
               vinculada históricamente al campo y a los cultivos tradicionales, donde la
@@ -133,8 +111,8 @@ export default function HomePage() {
             </p>
             <Link
               href="/productos"
-              className="group mt-7 inline-flex items-center gap-3 font-body text-xs md:text-sm tracking-wide pl-5 pr-2 py-2 rounded-full transition-opacity duration-300 hover:opacity-90"
-              style={{ backgroundColor: '#8DC83E', color: '#0B2407' }}
+              className="animate-slide-in-left group mt-7 inline-flex items-center gap-3 font-body text-xs md:text-sm tracking-wide pl-5 pr-2 py-2 rounded-full transition-opacity duration-300 hover:opacity-90"
+              style={{ backgroundColor: '#8DC83E', color: '#0B2407', animationDelay: '320ms' }}
             >
               Conoce nuestros productos
               <span
@@ -205,7 +183,7 @@ export default function HomePage() {
       {/* NUESTROS PRODUCTOS */}
       <section className="bg-blanco">
         <div className="max-w-[1500px] mx-auto px-6 md:px-10 pb-20 md:pb-28">
-          <div className="text-center max-w-[420px] mx-auto mt-12 md:mt-16 mb-16 md:mb-20">
+          <div className="text-center max-w-[420px] mx-auto mt-8 md:mt-12 mb-10 md:mb-16">
             <h2 className="font-heading text-[54px] leading-[0.95] text-[#0B2407] md:text-[72px]">
               Nuestros
               <br />
@@ -225,7 +203,7 @@ export default function HomePage() {
             </p>
           </div>
 
-          <div className="grid gap-y-16 sm:grid-cols-2 sm:gap-x-10 lg:grid-cols-4 lg:gap-x-12 lg:gap-y-0">
+          <div className="grid gap-y-10 sm:grid-cols-2 sm:gap-x-8 sm:gap-y-12 lg:grid-cols-4 lg:gap-x-12 lg:gap-y-0">
             {productos.map((p) => (
               <article key={p.nombre} className="text-center">
                 <Link href={p.href} className="group flex flex-col items-center">
@@ -303,7 +281,7 @@ export default function HomePage() {
 
       {/* EMPRESA VINCULADA AL CAMPO */}
       <section className="bg-crema/40">
-        <div className="max-w-[1440px] pl-12 pr-6 md:pr-12 pb-28 md:pb-36">
+        <div className="max-w-[1440px] px-6 pt-16 pb-16 sm:pl-10 md:pl-12 md:pr-12 md:pt-28 md:pb-28 lg:pt-36 lg:pb-36">
           <div className="relative">
             <div className="relative aspect-[16/11.5] overflow-hidden rounded-[22px] md:aspect-[16/10.4] lg:aspect-[16/8.8]">
               <div className="absolute inset-y-0 left-[-2%] w-[104%] md:left-[-4%] md:w-[108%] lg:left-[-5%] lg:w-[110%]">

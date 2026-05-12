@@ -48,8 +48,8 @@ export default function ContactoPage() {
       <section className="flex items-center px-4 py-8 md:px-8 md:py-12">
         <div className="mx-auto w-full max-w-[1800px]">
           <div className="relative grid gap-6 md:min-h-[90vh] md:grid-cols-2 md:items-stretch">
-            <div className="flex flex-col rounded-3xl bg-sand p-10 pt-16 md:p-16 md:pt-24 lg:p-20 lg:pt-32">
-              <h1 className="font-heading text-[64px] leading-[1.1] text-ink">
+            <div className="flex flex-col rounded-3xl bg-sand p-6 pt-10 sm:p-8 sm:pt-14 md:p-12 md:pt-20 lg:p-16 lg:pt-28">
+              <h1 className="font-heading text-[34px] sm:text-[46px] md:text-[56px] lg:text-[64px] leading-[1.1] text-ink">
                 Ponte en contacto
                 <br />
                 con Agrícola Ardal
@@ -63,10 +63,10 @@ export default function ContactoPage() {
                 nectarinas, naranjas y limones cultivados en Murcia.
               </p>
 
-              <div className="mt-auto flex flex-col gap-4 pt-12">
+              <div className="mt-auto flex flex-col gap-3 pt-8 md:pt-12">
                 <a
                   href={CONTACTO.telefonoHref}
-                  className="inline-flex w-full max-w-lg items-center gap-5 rounded-[20px] bg-paper px-8 py-7 text-lg text-ink shadow-sm transition hover:shadow-md"
+                  className="inline-flex w-full max-w-lg items-center gap-4 rounded-[20px] bg-paper px-5 py-4 text-base text-ink shadow-sm transition hover:shadow-md sm:px-8 sm:py-6 sm:text-lg"
                 >
                   <PhoneIcon />
                   {CONTACTO.telefono}
@@ -75,7 +75,7 @@ export default function ContactoPage() {
                   href={CONTACTO.direccionUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex w-full max-w-lg items-center gap-5 rounded-[20px] bg-paper px-8 py-7 text-lg text-ink shadow-sm transition hover:shadow-md"
+                  className="inline-flex w-full max-w-lg items-center gap-4 rounded-[20px] bg-paper px-5 py-4 text-base text-ink shadow-sm transition hover:shadow-md sm:px-8 sm:py-6 sm:text-lg"
                 >
                   <PinIcon />
                   <span className="text-left leading-tight whitespace-pre-line">

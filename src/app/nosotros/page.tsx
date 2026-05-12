@@ -134,7 +134,7 @@ export default function NosotrosPage() {
           <ParallaxImagePair />
 
           <div className="space-y-6 md:pl-16 lg:pl-24">
-            <h2 className="font-heading text-4xl leading-tight text-ink text-balance md:text-5xl">
+            <h2 className="font-heading text-3xl leading-tight text-ink text-balance sm:text-4xl md:text-5xl">
               Una agricultura basada en el cuidado y la constancia
             </h2>
             <div className="space-y-4 text-xl leading-relaxed text-ink">
@@ -167,7 +167,7 @@ export default function NosotrosPage() {
           />
           <div className="absolute inset-0 z-10 px-6 md:px-12">
             <div className="mx-auto grid max-w-[1600px] gap-10 md:grid-cols-2 md:items-start md:gap-24 md:pl-24 lg:pl-40">
-              <h2 className="font-heading text-[64px] leading-tight text-ink text-balance md:-mt-16 md:pl-8 lg:-mt-24 lg:pl-16">
+              <h2 className="font-heading text-[36px] sm:text-[48px] md:text-[56px] lg:text-[64px] leading-tight text-ink text-balance md:-mt-16 md:pl-8 lg:-mt-24 lg:pl-16">
                 Un entorno agrícola con identidad propia
               </h2>
               <div className="space-y-4 text-xl leading-relaxed text-ink md:-mt-16 md:max-w-xl md:pl-8 lg:-mt-24 lg:pl-16">
@@ -210,7 +210,7 @@ export default function NosotrosPage() {
           </div>
 
           <div className="w-full max-w-2xl space-y-6 text-center text-cream">
-            <h2 className="font-heading text-[64px] leading-tight">
+            <h2 className="font-heading text-[36px] sm:text-[48px] md:text-[56px] lg:text-[64px] leading-tight">
               Calidad desde el origen
             </h2>
             <p className="text-xl leading-relaxed">
@@ -230,17 +230,17 @@ export default function NosotrosPage() {
 
       <section className="bg-ink px-6 pb-24 md:px-12 md:pb-32">
         <div className="mx-auto max-w-[1600px]">
-          <h2 className="text-center font-heading text-[64px] leading-tight text-cream">
+          <h2 className="text-center font-heading text-[36px] sm:text-[48px] md:text-[56px] lg:text-[64px] leading-tight text-cream">
             Nuestros productos
           </h2>
-          <div className="mt-16 grid gap-32 sm:grid-cols-2 md:mt-20 lg:grid-cols-4 lg:gap-40">
+          <div className="mt-12 grid gap-12 sm:grid-cols-2 sm:gap-16 md:mt-16 lg:grid-cols-4 lg:gap-24">
             {products.map((p) => (
               <Link
                 key={p.href}
                 href={p.href}
                 className="group flex flex-col items-center text-center text-cream"
               >
-                <div className="relative h-60 w-60 transition-transform duration-300 ease-out group-hover:scale-125 md:h-80 md:w-80 lg:h-96 lg:w-96">
+                <div className="relative h-40 w-40 transition-transform duration-300 ease-out group-hover:scale-125 sm:h-52 sm:w-52 md:h-64 md:w-64 lg:h-80 lg:w-80">
                   <Image
                     src={p.imageSrc}
                     alt={p.imageAlt}
@@ -281,7 +281,7 @@ export default function NosotrosPage() {
             en valor el campo y la calidad del producto.
           </p>
 
-          <div className="mt-4 flex flex-col items-stretch justify-center gap-20 sm:flex-row">
+          <div className="mt-4 flex flex-col items-stretch justify-center gap-4 sm:flex-row sm:gap-8 md:gap-12">
             <a
               href={CONTACTO.telefonoHref}
               className="inline-flex items-center justify-center gap-3 rounded-[20px] border border-[#FAF7F5]/50 bg-ardalGreenDeep px-8 py-5 text-lg font-medium text-ardalGreen transition hover:bg-ardalGreen hover:text-ardalGreenDeep"

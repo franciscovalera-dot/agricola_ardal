@@ -90,7 +90,7 @@ export default function WhyChooseSection() {
       <div className="mx-auto grid max-w-[1500px] items-center gap-14 px-6 py-24 md:px-10 md:py-32 lg:grid-cols-[1.05fr_1fr] lg:gap-24">
         <div className="relative lg:pl-20">
           <h2
-            className="relative z-10 max-w-[520px] font-heading text-[58px] leading-[0.95] text-[#062B05] transition-transform duration-100 ease-out md:text-[82px] lg:text-[92px]"
+            className="relative z-10 max-w-[520px] font-heading text-[36px] sm:text-[48px] leading-[0.95] text-[#062B05] transition-transform duration-100 ease-out md:text-[72px] lg:text-[92px]"
             style={{ transform: `translate3d(0, ${Math.min(offset, 0) * -0.1}px, 0)` }}
           >
             Por que elegir <br className="hidden md:block" />
@@ -111,19 +111,19 @@ export default function WhyChooseSection() {
         </div>
 
         <ul
-          className={`space-y-6 transition-all duration-700 ease-out ${
-            cardsVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
-          }`}
+          className="space-y-6"
         >
           {ventajasHome.map((v, index) => (
             <li
               key={v.titulo}
-              className="flex items-center gap-8 rounded-[18px] bg-blanco px-7 py-5 shadow-[0_1px_2px_rgba(0,0,0,0.02)] transition-all duration-700 ease-out"
+              className="flex items-center gap-5 rounded-[18px] bg-blanco px-5 py-4 shadow-[0_1px_2px_rgba(0,0,0,0.02)] transition-all duration-700 ease-out sm:gap-8 sm:px-7 sm:py-5"
               style={{
-                transitionDelay: cardsVisible ? `${index * 90}ms` : '0ms',
+                transform: cardsVisible ? 'translateX(0)' : 'translateX(48px)',
+                opacity: cardsVisible ? 1 : 0,
+                transitionDelay: cardsVisible ? `${index * 110}ms` : '0ms',
               }}
             >
-              <span className="relative flex h-14 w-14 flex-shrink-0 items-center justify-center rounded-[10px] bg-[#EEF0EA]">
+              <span className="relative flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-[10px] bg-[#EEF0EA] sm:h-14 sm:w-14">
                 <Image
                   src={v.icono}
                   alt=""

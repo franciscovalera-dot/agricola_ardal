@@ -73,7 +73,7 @@ export default function ProductosPage() {
       {/* INTRO */}
       <section className="bg-cream px-6 py-20 md:px-12 md:py-28">
         <div className="mx-auto max-w-[1600px]">
-          <p className="font-body text-xl leading-relaxed text-ink max-w-2xl">
+          <p className="font-body text-lg sm:text-xl leading-relaxed text-ink max-w-2xl">
             Cultivamos cada fruto en su temporada y lo recogemos en su punto
             justo de maduración. Esta es la familia de sabores que nace en el
             campo del Ardal, en Mula, Murcia.
@@ -96,17 +96,17 @@ export default function ProductosPage() {
                       alt={p.imageAlt}
                       fill
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                      className="object-contain p-10 transition-transform duration-700 ease-out group-hover:scale-110"
+                      className="object-contain p-6 sm:p-8 md:p-10 transition-transform duration-700 ease-out group-hover:scale-110"
                     />
                   </div>
                   <div className="pt-6">
-                    <h2 className="font-heading text-[34px] leading-none text-ink transition-colors duration-300 group-hover:text-verde-oscuro">
+                    <h2 className="font-heading text-[26px] sm:text-[30px] md:text-[34px] leading-none text-ink transition-colors duration-300 group-hover:text-verde-oscuro">
                       {p.title}
                     </h2>
                     <p className="font-body mt-3 text-base leading-relaxed text-ink/65">
                       {p.descripcion}
                     </p>
-                    <span className="mt-5 inline-flex items-center gap-2 font-body text-xs uppercase tracking-widest text-verde-oscuro transition-colors duration-300 group-hover:text-ardalGreen">
+                    <span className="mt-5 inline-flex items-center gap-2 font-body text-sm text-verde-oscuro transition-colors duration-300 group-hover:text-ardalGreen">
                       Ver más
                       <svg
                         width="16"
@@ -114,6 +114,7 @@ export default function ProductosPage() {
                         viewBox="0 0 26 26"
                         fill="none"
                         aria-hidden
+                        className="transition-transform duration-300 group-hover:translate-x-1"
                       >
                         <path
                           d="M19.1193 18.106L19.1193 6.03538L7.04868 6.03538"

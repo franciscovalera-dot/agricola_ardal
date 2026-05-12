@@ -41,9 +41,14 @@ module.exports = {
           '0%': { opacity: '0', transform: 'scale(0.96)' },
           '100%': { opacity: '1', transform: 'scale(1)' },
         },
+        slideInLeft: {
+          '0%': { opacity: '0', transform: 'translateX(-36px)' },
+          '100%': { opacity: '1', transform: 'translateX(0)' },
+        },
       },
       animation: {
         'fade-in': 'fadeIn 0.9s ease-out both',
+        'slide-in-left': 'slideInLeft 0.7s ease-out both',
       },
     },
   },

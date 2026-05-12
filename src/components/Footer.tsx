@@ -21,7 +21,7 @@ export default function Footer() {
         <div className="hidden h-[150px] w-px bg-blanco/70 lg:block" />
 
         <div className="flex flex-col gap-8 lg:flex-1">
-          <nav className="flex flex-wrap gap-x-8 gap-y-3 font-body text-[11px] text-blanco/90">
+          <nav className="flex flex-wrap gap-x-8 gap-y-3 font-body text-[13px] text-blanco/90">
             <a href="https://www.chillypills.com/" target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-[#8DC83E]">Diseno web Chillypills</a>
             <Link href="/aviso-legal" className="transition-colors hover:text-[#8DC83E]">
               Aviso Legal
