@@ -45,7 +45,7 @@ export default function ContactoPage() {
     <main className="min-h-screen bg-cream">
       <Navbar />
 
-      <section className="flex items-center px-4 py-8 md:px-8 md:py-12">
+      <section className="flex items-center px-4 py-4 md:px-8 md:py-12">
         <div className="mx-auto w-full max-w-[1800px]">
           <div className="relative grid gap-6 md:min-h-[90vh] md:grid-cols-2 md:items-stretch">
             <div className="flex flex-col rounded-3xl bg-sand p-6 pt-10 sm:p-8 sm:pt-14 md:p-12 md:pt-20 lg:p-16 lg:pt-28">
@@ -85,7 +85,7 @@ export default function ContactoPage() {
               </div>
             </div>
 
-            <div className="relative aspect-[900/916] w-full overflow-hidden rounded-3xl md:aspect-auto">
+            <div className="relative aspect-[4/3] w-full overflow-hidden rounded-3xl md:aspect-auto">
               <Image
                 src="/images/arbol-naranja.png"
                 alt="Naranjas en el árbol"

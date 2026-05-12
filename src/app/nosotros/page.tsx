@@ -84,7 +84,7 @@ export default function NosotrosPage() {
 
       <section
         aria-label="Sobre Agrícola Ardal"
-        className="relative h-[calc(100vh-72px)] w-full overflow-hidden"
+        className="relative h-[55vh] w-full overflow-hidden md:h-[calc(100vh-72px)]"
       >
         <Image
           src="/images/Cerezos.png"
@@ -94,7 +94,7 @@ export default function NosotrosPage() {
           className="object-cover"
         />
         <div className="absolute inset-0 flex items-end">
-          <h1 className="w-full whitespace-nowrap px-2 pb-6 text-center font-heading text-[clamp(2.5rem,14vw,222px)] leading-[0.95] text-cream drop-shadow-[0_2px_12px_rgba(0,0,0,0.35)] md:pb-10">
+          <h1 className="w-full px-4 pb-6 text-center font-heading text-[clamp(2.5rem,14vw,222px)] leading-[0.95] text-cream drop-shadow-[0_2px_12px_rgba(0,0,0,0.35)] md:whitespace-nowrap md:px-2 md:pb-10">
             Sobre Agrícola Ardal
           </h1>
         </div>
