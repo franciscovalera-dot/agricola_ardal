@@ -61,10 +61,13 @@ export default function Navbar() {
           <summary className="list-none cursor-pointer font-body text-sm uppercase tracking-widest">
             Menú
           </summary>
-          <ul className="absolute right-0 mt-4 bg-blanco text-negro shadow-lg rounded-md py-3 px-6 min-w-[180px] font-body text-sm uppercase tracking-widest space-y-3">
+          <ul className="absolute right-0 mt-3 bg-blanco text-negro shadow-xl rounded-xl py-2 min-w-[220px] font-body uppercase tracking-widest">
             {navItems.map((item) => (
               <li key={item.href}>
-                <Link href={item.href} className="hover:text-verde-oscuro transition-colors">
+                <Link
+                  href={item.href}
+                  className="block px-6 py-4 text-base hover:text-verde-oscuro hover:bg-cream transition-colors"
+                >
                   {item.label}
                 </Link>
               </li>

@@ -171,27 +171,43 @@ export default function NosotrosPage() {
               <h2 className="font-heading text-[36px] sm:text-[48px] md:text-[56px] lg:text-[64px] leading-tight text-ink text-balance md:-mt-16 md:pl-8 lg:-mt-24 lg:pl-16">
                 Un entorno agrícola con identidad propia
               </h2>
-              <div className="space-y-4 text-base leading-relaxed text-ink sm:text-lg md:-mt-16 md:max-w-xl md:pl-8 md:text-xl lg:-mt-24 lg:pl-16">
-                <p>
-                  Nuestra actividad se desarrolla en la zona del Ardal, en el
-                  término municipal de Mula, Murcia. Se trata de un entorno
-                  caracterizado por paisajes de secano, donde predominan
-                  cultivos tradicionales como el almendro, la vid o los
-                  cereales.
-                </p>
-                <p>
-                  Este paisaje agrícola define no solo el entorno, sino
-                  también la forma de trabajar el campo. Grandes extensiones,
-                  fincas abiertas y una relación directa con la tierra marcan
-                  el ritmo de la actividad agrícola en la zona.
-                </p>
-                <p>
-                  El Ardal es un ejemplo del carácter agrícola de Mula, donde
-                  la estacionalidad, el clima y la tradición siguen teniendo
-                  un papel clave en el desarrollo de los cultivos. Formar
-                  parte de este entorno refuerza nuestro compromiso con una
-                  agricultura conectada con el territorio.
-                </p>
+              <div className="space-y-4 text-xl leading-relaxed text-ink md:-mt-16 md:max-w-xl md:pl-8 lg:-mt-24 lg:pl-16">
+                {/* Versión móvil — resumida */}
+                <div className="space-y-4 md:hidden">
+                  <p>
+                    Nuestra actividad se desarrolla en la zona del Ardal, en
+                    Mula, Murcia. Un entorno de secano donde cultivos
+                    tradicionales como el almendro o la vid marcan el paisaje.
+                  </p>
+                  <p>
+                    Este entorno define nuestra forma de trabajar el campo y
+                    refuerza nuestro compromiso con una agricultura conectada
+                    al territorio.
+                  </p>
+                </div>
+                {/* Versión desktop — completa */}
+                <div className="hidden md:block space-y-4">
+                  <p>
+                    Nuestra actividad se desarrolla en la zona del Ardal, en el
+                    término municipal de Mula, Murcia. Se trata de un entorno
+                    caracterizado por paisajes de secano, donde predominan
+                    cultivos tradicionales como el almendro, la vid o los
+                    cereales.
+                  </p>
+                  <p>
+                    Este paisaje agrícola define no solo el entorno, sino
+                    también la forma de trabajar el campo. Grandes extensiones,
+                    fincas abiertas y una relación directa con la tierra marcan
+                    el ritmo de la actividad agrícola en la zona.
+                  </p>
+                  <p>
+                    El Ardal es un ejemplo del carácter agrícola de Mula, donde
+                    la estacionalidad, el clima y la tradición siguen teniendo
+                    un papel clave en el desarrollo de los cultivos. Formar
+                    parte de este entorno refuerza nuestro compromiso con una
+                    agricultura conectada con el territorio.
+                  </p>
+                </div>
               </div>
             </div>
           </div>
