@@ -3,6 +3,8 @@ import Link from 'next/link';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import WhyChooseSection from '@/components/WhyChooseSection';
+import ProductosHomeSection from '@/components/ProductosHomeSection';
+import EmpresaSection from '@/components/EmpresaSection';
 import { FALLBACK_IMAGES } from '@/lib/images';
 import { CONTACTO } from '@/lib/contacto';
 
@@ -71,7 +73,7 @@ export default function HomePage() {
       <Navbar />
 
       {/* HERO */}
-      <section className="relative w-full h-[calc(100vh-72px)] min-h-[600px] overflow-hidden">
+      <section className="relative w-full h-[55vh] overflow-hidden md:h-[calc(100vh-72px)]">
         <Image
           src={FALLBACK_IMAGES.heroNaranjos}
           alt="Campo de naranjos en Murcia"
@@ -93,7 +95,7 @@ export default function HomePage() {
               Fruta cultivada en el campo de Murcia.
             </h1>
             <p
-              className="animate-slide-in-left font-body mt-8 text-base leading-relaxed max-w-xl"
+              className="animate-slide-in-left hidden md:block font-body mt-8 text-base leading-relaxed max-w-xl"
               style={{ color: '#0B2407', animationDelay: '120ms' }}
             >
               En Agrícola Ardal cultivamos fruta en Mula, Murcia, con una forma de trabajar ligada
@@ -102,12 +104,22 @@ export default function HomePage() {
               producto y el valor de hacer las cosas como se han hecho toda la vida.
             </p>
             <p
-              className="animate-slide-in-left font-body mt-4 text-base leading-relaxed max-w-xl"
+              className="animate-slide-in-left hidden md:block font-body mt-4 text-base leading-relaxed max-w-xl"
               style={{ color: '#0B2407', animationDelay: '220ms' }}
             >
               Nuestro entorno forma parte del paisaje agrícola del Ardal, una zona muleña
               vinculada históricamente al campo y a los cultivos tradicionales, donde la
               agricultura sigue marcando el ritmo de cada temporada.
+            </p>
+            {/* Texto alternativo solo móvil */}
+            <p
+              className="animate-slide-in-left font-body mt-4 text-base leading-relaxed md:hidden"
+              style={{ color: '#0B2407', animationDelay: '120ms' }}
+            >
+              Agrícola Ardal es una explotación familiar en Mula, Murcia, dedicada al cultivo
+              tradicional de albaricoques, nectarinas y cítricos, con un enfoque en la calidad
+              y el respeto por las formas de trabajar ligadas a la tierra y al paisaje agrícola
+              de la zona del Ardal.
             </p>
             <Link
               href="/productos"
@@ -181,53 +193,7 @@ export default function HomePage() {
       </section>
 
       {/* NUESTROS PRODUCTOS */}
-      <section className="bg-blanco">
-        <div className="max-w-[1500px] mx-auto px-6 md:px-10 pb-20 md:pb-28">
-          <div className="text-center max-w-[420px] mx-auto mt-8 md:mt-12 mb-10 md:mb-16">
-            <h2 className="font-heading text-[54px] leading-[0.95] text-[#0B2407] md:text-[72px]">
-              Nuestros
-              <br />
-              productos
-            </h2>
-            <p className="hidden">
-              Trabajamos únicamente variedades de fruta cultivada en Murcia, recogidas en su punto óptimo
-              de sabor y propiedades nutricionales para llegar a tu mesa con la frescura del campo.
-            </p>
-            <p className="hidden">
-              Trabajamos diferentes variedades de fruta cultivada en Murcia, adaptÃ¡ndonos a los ciclos naturales
-              de cada cultivo y poniendo el foco en la calidad, la recolecciÃ³n y el cuidado del campo.
-            </p>
-            <p className="font-body mt-4 max-w-[340px] mx-auto text-[14px] leading-[1.35] text-[#0B2407] md:max-w-[360px]">
-              Trabajamos diferentes variedades de fruta cultivada en Murcia, adaptándonos a los ciclos naturales
-              de cada cultivo y poniendo el foco en la calidad, la recolección y el cuidado del campo.
-            </p>
-          </div>
-
-          <div className="grid gap-y-10 sm:grid-cols-2 sm:gap-x-8 sm:gap-y-12 lg:grid-cols-4 lg:gap-x-12 lg:gap-y-0">
-            {productos.map((p) => (
-              <article key={p.nombre} className="text-center">
-                <Link href={p.href} className="group flex flex-col items-center">
-                  <div className="relative h-56 w-56 transition-transform duration-300 ease-out group-hover:scale-125 md:h-72 md:w-72 lg:h-[18rem] lg:w-[18rem] xl:h-[19rem] xl:w-[19rem]">
-                    <Image
-                      src={p.imagen}
-                      alt={p.nombre}
-                      fill
-                      sizes="(max-width: 768px) 100vw, 25vw"
-                      className="object-contain"
-                    />
-                  </div>
-                  <h3 className="mt-6 font-heading text-[28px] leading-none text-negro transition-colors duration-300 group-hover:text-verde-oscuro md:text-[34px]">
-                    {p.nombre}
-                  </h3>
-                  <p className="mt-3 max-w-[220px] font-body text-[14px] leading-[1.25] text-negro/75 md:max-w-[240px]">
-                    {p.descripcion}
-                  </p>
-                </Link>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
+      <ProductosHomeSection />
 
       {/* POR QUÉ ELEGIR */}
       <WhyChooseSection />
@@ -280,64 +246,7 @@ export default function HomePage() {
       </section>
 
       {/* EMPRESA VINCULADA AL CAMPO */}
-      <section className="bg-crema/40">
-        <div className="max-w-[1440px] px-6 pt-16 pb-16 sm:pl-10 md:pl-12 md:pr-12 md:pt-28 md:pb-28 lg:pt-36 lg:pb-36">
-          <div className="relative">
-            <div className="relative aspect-[16/11.5] overflow-hidden rounded-[22px] md:aspect-[16/10.4] lg:aspect-[16/8.8]">
-              <div className="absolute inset-y-0 left-[-2%] w-[104%] md:left-[-4%] md:w-[108%] lg:left-[-5%] lg:w-[110%]">
-                <Image
-                  src="/images/Pueblo.png"
-                  alt="Pueblo de Murcia con su entorno natural"
-                  fill
-                  sizes="(max-width: 768px) 100vw, 90vw"
-                  className="object-cover object-left"
-                />
-              </div>
-            </div>
-
-            <div className="relative z-10 mx-4 -mt-12 rounded-[22px] bg-[#062B05] px-8 py-7 text-blanco shadow-[0_18px_50px_rgba(6,43,5,0.18)] md:absolute md:-right-[33%] md:top-[54%] md:mx-0 md:mt-0 md:w-[50%] md:-translate-y-1/2 md:px-11 md:py-9 lg:-right-[36%] lg:w-[54%] lg:px-12 lg:py-10 xl:-right-[37%]">
-              <h2 className="max-w-none font-heading text-[40px] leading-[0.98] text-[#FCF9F0] md:text-[56px] lg:text-[64px]">
-                Una empresa vinculada al campo y a su entorno
-              </h2>
-              <p className="hidden">
-                En Agrícola Ardal nos sentimos parte del paisaje que nos rodea. Trabajamos con respeto
-                por la tierra que nos da de comer, manteniendo un vínculo estrecho con los pueblos,
-                las personas y las costumbres de Murcia.
-              </p>
-              <Link
-                href="/nosotros"
-                className="hidden"
-              >
-                Conoce nuestra historia
-              </Link>
-              <p className="font-body mt-7 max-w-[29rem] text-[13px] leading-[1.34] text-[#FCF9F0]/88 md:max-w-[31rem] md:text-[14px]">
-                Agrícola Ardal es una empresa agrícola de Mula, Murcia, centrada en el cultivo de fruta y en el valor de una producción arraigada al territorio. Nuestra actividad se desarrolla en una zona donde el paisaje agrícola sigue formando parte de la vida, de la economía y de la identidad local.
-              </p>
-              <p className="font-body mt-5 max-w-[27rem] text-[13px] leading-[1.34] text-[#FCF9F0]/88 md:max-w-[29rem] md:text-[14px]">
-                Trabajamos desde el compromiso con la tierra, con una visión basada en la calidad del producto y en la continuidad de una forma de cultivar ligada al campo de siempre.
-              </p>
-              <Link
-                href="/nosotros"
-                className="group mt-8 inline-flex items-center gap-3 rounded-full bg-[#8DC83E] py-2 pl-5 pr-2 font-body text-sm text-[#0B2407] transition-opacity duration-300 hover:opacity-90"
-              >
-                Conócenos
-                <span className="flex h-9 w-9 items-center justify-center rounded-full bg-[#0B2407] text-[#8DC83E] transition-transform duration-300 group-hover:translate-x-1">
-                  <svg
-                    width="18"
-                    height="18"
-                    viewBox="0 0 26 26"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path d="M19.1193 18.106L19.1193 6.03538L7.04868 6.03538" stroke="currentColor" strokeWidth="1.5" />
-                    <path d="M19.1184 6.03457L6.03448 19.1185" stroke="currentColor" strokeWidth="1.5" />
-                  </svg>
-                </span>
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
+      <EmpresaSection />
 
       {/* CONTACTO */}
       <section className="bg-[#8DC83E]">

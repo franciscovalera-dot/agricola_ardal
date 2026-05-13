@@ -66,7 +66,7 @@ export default function Navbar() {
               <li key={item.href}>
                 <Link
                   href={item.href}
-                  className="block px-6 py-4 text-base hover:text-verde-oscuro hover:bg-cream transition-colors"
+                  className="block px-6 py-4 font-body text-base uppercase tracking-widest hover:text-verde-oscuro hover:bg-cream transition-colors"
                 >
                   {item.label}
                 </Link>

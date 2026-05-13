@@ -49,12 +49,18 @@ export default function ContactoPage() {
         <div className="mx-auto w-full max-w-[1800px]">
           <div className="relative grid gap-6 md:min-h-[90vh] md:grid-cols-2 md:items-stretch">
             <div className="flex flex-col rounded-3xl bg-sand p-6 pt-10 sm:p-8 sm:pt-14 md:p-12 md:pt-20 lg:p-16 lg:pt-28">
-              <h1 className="font-heading text-[34px] sm:text-[46px] md:text-[56px] lg:text-[64px] leading-[1.1] text-ink">
+              <h1
+                className="animate-slide-in-left font-heading text-[34px] sm:text-[46px] md:text-[56px] lg:text-[64px] leading-[1.1] text-ink"
+                style={{ animationDelay: '0ms' }}
+              >
                 Ponte en contacto
                 <br />
                 con Agrícola Ardal
               </h1>
-              <p className="mt-10 max-w-lg text-base leading-relaxed text-ink md:mt-12">
+              <p
+                className="animate-slide-in-left mt-10 max-w-lg text-base leading-relaxed text-ink md:mt-12"
+                style={{ animationDelay: '150ms' }}
+              >
                 Si deseas más información sobre nuestra actividad agrícola,
                 nuestros productos o nuestra empresa, puedes contactar con
                 nosotros a través de los datos disponibles en esta página. En
@@ -66,7 +72,8 @@ export default function ContactoPage() {
               <div className="mt-auto flex flex-col gap-3 pt-8 md:pt-12">
                 <a
                   href={CONTACTO.telefonoHref}
-                  className="inline-flex w-full max-w-lg items-center gap-4 rounded-[20px] bg-paper px-5 py-4 text-base text-ink shadow-sm transition hover:shadow-md sm:px-8 sm:py-6 sm:text-lg"
+                  className="animate-slide-in-left inline-flex w-full max-w-lg items-center gap-4 rounded-[20px] bg-paper px-5 py-4 text-base text-ink shadow-sm transition hover:shadow-md sm:px-8 sm:py-6 sm:text-lg"
+                  style={{ animationDelay: '300ms' }}
                 >
                   <PhoneIcon />
                   {CONTACTO.telefono}
@@ -75,7 +82,8 @@ export default function ContactoPage() {
                   href={CONTACTO.direccionUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex w-full max-w-lg items-center gap-4 rounded-[20px] bg-paper px-5 py-4 text-base text-ink shadow-sm transition hover:shadow-md sm:px-8 sm:py-6 sm:text-lg"
+                  className="animate-slide-in-left inline-flex w-full max-w-lg items-center gap-4 rounded-[20px] bg-paper px-5 py-4 text-base text-ink shadow-sm transition hover:shadow-md sm:px-8 sm:py-6 sm:text-lg"
+                  style={{ animationDelay: '420ms' }}
                 >
                   <PinIcon />
                   <span className="text-left leading-tight whitespace-pre-line">

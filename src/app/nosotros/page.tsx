@@ -1,8 +1,8 @@
 import Image from "next/image";
-import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { ParallaxImagePair } from "@/components/ParallaxImagePair";
+import NosotrosProductosSection from "@/components/NosotrosProductosSection";
 import { CONTACTO } from "@/lib/contacto";
 
 export const metadata = {
@@ -94,7 +94,7 @@ export default function NosotrosPage() {
           className="object-cover"
         />
         <div className="absolute inset-0 flex items-end">
-          <h1 className="w-full px-4 pb-6 text-center font-heading text-[clamp(2.5rem,14vw,222px)] leading-[0.95] text-cream drop-shadow-[0_2px_12px_rgba(0,0,0,0.35)] md:whitespace-nowrap md:px-2 md:pb-10">
+          <h1 className="animate-fade-in w-full px-4 pb-6 text-center font-heading text-[clamp(2.5rem,14vw,222px)] leading-[0.95] text-cream drop-shadow-[0_2px_12px_rgba(0,0,0,0.35)] md:whitespace-nowrap md:px-2 md:pb-10" style={{ animationDelay: '200ms' }}>
             Sobre Agrícola Ardal
           </h1>
         </div>
@@ -245,37 +245,7 @@ export default function NosotrosPage() {
         </div>
       </section>
 
-      <section className="bg-ink px-6 pb-24 md:px-12 md:pb-32">
-        <div className="mx-auto max-w-[1600px]">
-          <h2 className="text-center font-heading text-[36px] sm:text-[48px] md:text-[56px] lg:text-[64px] leading-tight text-cream">
-            Nuestros productos
-          </h2>
-          <div className="mt-12 grid gap-12 sm:grid-cols-2 sm:gap-16 md:mt-16 lg:grid-cols-4 lg:gap-24">
-            {products.map((p) => (
-              <Link
-                key={p.href}
-                href={p.href}
-                className="group flex flex-col items-center text-center text-cream"
-              >
-                <div className="relative h-40 w-40 transition-transform duration-300 ease-out group-hover:scale-125 sm:h-52 sm:w-52 md:h-64 md:w-64 lg:h-80 lg:w-80">
-                  <Image
-                    src={p.imageSrc}
-                    alt={p.imageAlt}
-                    fill
-                    className="object-contain"
-                  />
-                </div>
-                <h3 className="mt-6 font-heading text-2xl md:text-3xl">
-                  {p.title}
-                </h3>
-                <p className="mt-3 max-w-xs text-sm leading-relaxed text-cream/80">
-                  {p.description}
-                </p>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
+      <NosotrosProductosSection products={products} />
 
       <section className="bg-ink px-6 py-24 md:px-12 md:py-32">
         <div className="mx-auto flex max-w-5xl flex-col items-center gap-8 text-center text-ardalGreen md:gap-10">

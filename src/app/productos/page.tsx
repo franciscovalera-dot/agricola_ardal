@@ -1,7 +1,7 @@
 import Image from "next/image";
-import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import ProductosGrid from "@/components/ProductosGrid";
 
 export const metadata = {
   title: "Productos — Agrícola Ardal",
@@ -64,7 +64,7 @@ export default function ProductosPage() {
         />
         <div className="absolute inset-0 bg-ink/20" />
         <div className="absolute inset-0 flex items-end">
-          <h1 className="w-full px-2 pb-6 text-center font-heading text-[clamp(2.5rem,11vw,160px)] leading-[0.95] text-cream drop-shadow-[0_2px_16px_rgba(0,0,0,0.4)] md:pb-10">
+          <h1 className="animate-fade-in w-full px-2 pb-6 text-center font-heading text-[clamp(2.5rem,11vw,160px)] leading-[0.95] text-cream drop-shadow-[0_2px_16px_rgba(0,0,0,0.4)] md:pb-10" style={{ animationDelay: '200ms' }}>
             Nuestros productos
           </h1>
         </div>
@@ -84,55 +84,7 @@ export default function ProductosPage() {
       {/* GRID */}
       <section className="bg-cream px-6 pb-28 md:px-12 md:pb-36">
         <div className="mx-auto max-w-[1600px]">
-          <ul className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8">
-            {productos.map((p) => (
-              <li key={p.href}>
-                <Link href={p.href} className="group block">
-                  <div
-                    className={`relative aspect-[3/4] overflow-hidden rounded-[22px] ${p.bgClassName} transition-transform duration-500 ease-out group-hover:-translate-y-2`}
-                  >
-                    <Image
-                      src={p.imageSrc}
-                      alt={p.imageAlt}
-                      fill
-                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                      className="object-contain p-6 sm:p-8 md:p-10 transition-transform duration-700 ease-out group-hover:scale-110"
-                    />
-                  </div>
-                  <div className="pt-6">
-                    <h2 className="font-heading text-[26px] sm:text-[30px] md:text-[34px] leading-none text-ink transition-colors duration-300 group-hover:text-verde-oscuro">
-                      {p.title}
-                    </h2>
-                    <p className="font-body mt-3 text-base leading-relaxed text-ink/65">
-                      {p.descripcion}
-                    </p>
-                    <span className="mt-5 inline-flex items-center gap-2 font-body text-sm text-verde-oscuro transition-colors duration-300 group-hover:text-ardalGreen">
-                      Ver más
-                      <svg
-                        width="16"
-                        height="16"
-                        viewBox="0 0 26 26"
-                        fill="none"
-                        aria-hidden
-                        className="transition-transform duration-300 group-hover:translate-x-1"
-                      >
-                        <path
-                          d="M19.1193 18.106L19.1193 6.03538L7.04868 6.03538"
-                          stroke="currentColor"
-                          strokeWidth="1.5"
-                        />
-                        <path
-                          d="M19.1184 6.03457L6.03448 19.1185"
-                          stroke="currentColor"
-                          strokeWidth="1.5"
-                        />
-                      </svg>
-                    </span>
-                  </div>
-                </Link>
-              </li>
-            ))}
-          </ul>
+          <ProductosGrid productos={productos} />
         </div>
       </section>
 
