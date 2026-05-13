@@ -54,7 +54,7 @@ export default function ProductosPage() {
       <Navbar />
 
       {/* HERO */}
-      <section className="relative h-[calc(100vh-72px)] w-full overflow-hidden">
+      <section className="relative h-[55vh] w-full overflow-hidden md:h-[calc(100vh-72px)]">
         <Image
           src="/images/arbol-nectarina.jpg"
           alt="Árbol de nectarinas en Mula, Murcia"
