@@ -73,7 +73,7 @@ export default function HomePage() {
       <Navbar />
 
       {/* HERO */}
-      <section className="relative w-full h-[55vh] overflow-hidden md:h-[calc(100vh-72px)]">
+      <section className="relative w-full h-[70vh] overflow-hidden md:h-[calc(100vh-72px)]">
         <Image
           src={FALLBACK_IMAGES.heroNaranjos}
           alt="Campo de naranjos en Murcia"
