@@ -3,8 +3,25 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
+import type { ReactNode } from 'react';
 
-export default function EmpresaSection() {
+type EmpresaSectionProps = {
+  imageUrl: string;
+  imageAlt: string;
+  heading: string;
+  body: ReactNode;
+  ctaLabel: string;
+  ctaHref: string;
+};
+
+export default function EmpresaSection({
+  imageUrl,
+  imageAlt,
+  heading,
+  body,
+  ctaLabel,
+  ctaHref,
+}: EmpresaSectionProps) {
   const sectionRef = useRef<HTMLDivElement | null>(null);
   const [offset, setOffset] = useState(0);
 
@@ -49,8 +66,8 @@ export default function EmpresaSection() {
           <div className="relative aspect-[16/11.5] overflow-hidden rounded-[22px] md:aspect-[16/10.4] lg:aspect-[16/8.8]">
             <div className="absolute inset-y-0 left-[-2%] w-[104%] md:left-[-4%] md:w-[108%] lg:left-[-5%] lg:w-[110%]">
               <Image
-                src="/images/Pueblo.png"
-                alt="Pueblo de Murcia con su entorno natural"
+                src={imageUrl}
+                alt={imageAlt}
                 fill
                 sizes="(max-width: 768px) 100vw, 90vw"
                 className="object-cover object-left"
@@ -65,19 +82,16 @@ export default function EmpresaSection() {
             style={{ transform: `translateX(${offset * -0.5}px)` }}
           >
             <h2 className="max-w-none font-heading text-[40px] leading-[0.98] text-[#FCF9F0] md:text-[56px] lg:text-[64px]">
-              Una empresa vinculada al campo y a su entorno
+              {heading}
             </h2>
-            <p className="font-body mt-7 max-w-[29rem] text-[13px] leading-[1.34] text-[#FCF9F0]/88 md:max-w-[31rem] md:text-[14px]">
-              Agrícola Ardal es una empresa agrícola de Mula, Murcia, centrada en el cultivo de fruta y en el valor de una producción arraigada al territorio. Nuestra actividad se desarrolla en una zona donde el paisaje agrícola sigue formando parte de la vida, de la economía y de la identidad local.
-            </p>
-            <p className="font-body mt-5 max-w-[27rem] text-[13px] leading-[1.34] text-[#FCF9F0]/88 md:max-w-[29rem] md:text-[14px]">
-              Trabajamos desde el compromiso con la tierra, con una visión basada en la calidad del producto y en la continuidad de una forma de cultivar ligada al campo de siempre.
-            </p>
+            <div className="font-body mt-7 max-w-[29rem] space-y-5 text-[13px] leading-[1.34] text-[#FCF9F0]/88 md:max-w-[31rem] md:text-[14px]">
+              {body}
+            </div>
             <Link
-              href="/nosotros"
+              href={ctaHref}
               className="group mt-8 inline-flex items-center gap-3 rounded-full bg-[#8DC83E] py-2 pl-5 pr-2 font-body text-sm text-[#0B2407] transition-opacity duration-300 hover:opacity-90"
             >
-              Conócenos
+              {ctaLabel}
               <span className="flex h-9 w-9 items-center justify-center rounded-full bg-[#0B2407] text-[#8DC83E] transition-transform duration-300 group-hover:translate-x-1">
                 <svg width="18" height="18" viewBox="0 0 26 26" fill="none">
                   <path d="M19.1193 18.106L19.1193 6.03538L7.04868 6.03538" stroke="currentColor" strokeWidth="1.5" />

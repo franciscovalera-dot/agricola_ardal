@@ -4,38 +4,20 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
 
-const productos = [
-  {
-    nombre: 'Albaricoque',
-    href: '/albaricoques',
-    descripcion:
-      'De piel dorada y pulpa jugosa. Recogido en su punto justo de maduración para conservar todo su aroma.',
-    imagen: '/images/Albaricoque 2.svg',
-  },
-  {
-    nombre: 'Nectarina',
-    href: '/nectarinas',
-    descripcion:
-      'Dulce, firme y con un toque ácido. Una fruta de hueso que conquista por su sabor intenso y su frescura.',
-    imagen: '/images/Nectarina.svg',
-  },
-  {
-    nombre: 'Naranja',
-    href: '/naranjas',
-    descripcion:
-      'Cultivada al sol de Murcia, llena de zumo y vitamina. Sabor clásico, fresco y honesto.',
-    imagen: '/images/Naranja.svg',
-  },
-  {
-    nombre: 'Limones',
-    href: '/limones',
-    descripcion:
-      'Aromáticos, ácidos y siempre listos para realzar cualquier receta. Cosechados todo el año.',
-    imagen: '/images/Limon.svg',
-  },
-];
+type Producto = {
+  nombre: string;
+  href: string;
+  descripcion: string;
+  imagen: string;
+};
 
-export default function ProductosHomeSection() {
+type ProductosHomeSectionProps = {
+  heading: string;
+  intro: string;
+  productos: Producto[];
+};
+
+export default function ProductosHomeSection({ heading, intro, productos }: ProductosHomeSectionProps) {
   const sectionRef = useRef<HTMLElement | null>(null);
   const [visible, setVisible] = useState(false);
 
@@ -69,13 +51,10 @@ export default function ProductosHomeSection() {
           }}
         >
           <h2 className="font-heading text-[54px] leading-[0.95] text-[#0B2407] md:text-[72px]">
-            Nuestros
-            <br />
-            productos
+            {heading}
           </h2>
           <p className="font-body mt-4 max-w-[340px] mx-auto text-[14px] leading-[1.35] text-[#0B2407] md:max-w-[360px]">
-            Trabajamos diferentes variedades de fruta cultivada en Murcia, adaptándonos a los ciclos naturales
-            de cada cultivo y poniendo el foco en la calidad, la recolección y el cuidado del campo.
+            {intro}
           </p>
         </div>
 

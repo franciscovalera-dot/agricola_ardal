@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import './globals.css';
+import GTranslateWidget from '@/components/GTranslateWidget';
 
 export const metadata: Metadata = {
   title: 'Agrícola Ardal — Fruta cultivada en el campo de Murcia',
@@ -21,7 +22,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="es">
-      <body className="font-body bg-blanco text-negro antialiased">{children}</body>
+      <body className="font-body bg-blanco text-negro antialiased">
+        {children}
+        <GTranslateWidget />
+      </body>
     </html>
   );
 }

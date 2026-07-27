@@ -1,5 +1,4 @@
 import Image from "next/image";
-import { CONTACTO } from "@/lib/contacto";
 
 const PhoneIcon = () => (
   <svg
@@ -35,10 +34,22 @@ const PinIcon = () => (
 type ContactCTAProps = {
   title: string;
   description: string;
+  phone: string;
+  phoneHref: string;
+  address: string;
+  addressUrl: string;
   variant?: "light" | "dark";
 };
 
-export function ContactCTA({ title, description, variant = "light" }: ContactCTAProps) {
+export function ContactCTA({
+  title,
+  description,
+  phone,
+  phoneHref,
+  address,
+  addressUrl,
+  variant = "light",
+}: ContactCTAProps) {
   const isDark = variant === "dark";
   const containerBg = isDark ? "bg-ardalGreenDeep" : "bg-ardalGreen";
   const containerShadow = isDark
@@ -72,21 +83,21 @@ export function ContactCTA({ title, description, variant = "light" }: ContactCTA
           </p>
           <div className="mt-8 flex flex-col items-stretch justify-center gap-3 sm:flex-row">
             <a
-              href={CONTACTO.telefonoHref}
+              href={phoneHref}
               className={`inline-flex items-center justify-center gap-2 rounded-[20px] px-5 py-3 text-base font-medium shadow-sm transition ${buttonClass}`}
             >
               <PhoneIcon />
-              {CONTACTO.telefono}
+              {phone}
             </a>
             <a
-              href={CONTACTO.direccionUrl}
+              href={addressUrl}
               target="_blank"
               rel="noopener noreferrer"
               className={`inline-flex items-center justify-center gap-2 rounded-[20px] px-5 py-3 text-base font-medium shadow-sm transition ${buttonClass}`}
             >
               <PinIcon />
               <span className="text-left leading-tight whitespace-pre-line">
-                {CONTACTO.direccion}
+                {address}
               </span>
             </a>
           </div>

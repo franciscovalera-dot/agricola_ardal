@@ -12,7 +12,13 @@ type Product = {
   description: string;
 };
 
-export default function NosotrosProductosSection({ products }: { products: Product[] }) {
+export default function NosotrosProductosSection({
+  heading,
+  products,
+}: {
+  heading: string;
+  products: Product[];
+}) {
   const ref = useRef<HTMLElement | null>(null);
   const [visible, setVisible] = useState(false);
 
@@ -37,7 +43,7 @@ export default function NosotrosProductosSection({ products }: { products: Produ
             transform: visible ? 'translateY(0)' : 'translateY(30px)',
           }}
         >
-          Nuestros productos
+          {heading}
         </h2>
         <div className="mt-12 grid gap-12 sm:grid-cols-2 sm:gap-16 md:mt-16 lg:grid-cols-4 lg:gap-24">
           {products.map((p, index) => (

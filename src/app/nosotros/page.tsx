@@ -3,13 +3,14 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { ParallaxImagePair } from "@/components/ParallaxImagePair";
 import NosotrosProductosSection from "@/components/NosotrosProductosSection";
-import { CONTACTO } from "@/lib/contacto";
+import { getAllFruitProducts, getNosotrosPage, getSiteSettings } from "../../../sanity/lib/fetchers";
+import { urlFor } from "../../../sanity/lib/image";
+import { PortableText } from "@portabletext/react";
 
-export const metadata = {
-  title: "Nosotros — Agrícola Ardal",
-  description:
-    "La historia, los valores y las personas detrás de Agrícola Ardal en Mula, Murcia.",
-};
+export async function generateMetadata() {
+  const page = await getNosotrosPage();
+  return { title: page?.seoTitle, description: page?.seoDescription };
+}
 
 const PhoneIcon = () => (
   <svg
@@ -42,42 +43,21 @@ const PinIcon = () => (
   </svg>
 );
 
-const products = [
-  {
-    href: "/albaricoques",
-    imageSrc: "/images/Albaricoque 2.svg",
-    imageAlt: "Albaricoque",
-    title: "Albaricoques",
-    description:
-      "Cultivamos albaricoques con el cuidado que requiere una fruta de temporada, buscando siempre un producto de calidad, con sabor y con el valor de su origen en el campo murciano.",
-  },
-  {
-    href: "/nectarinas",
-    imageSrc: "/images/Nectarina.svg",
-    imageAlt: "Nectarina",
-    title: "Nectarinas",
-    description:
-      "Producimos nectarinas cultivadas en Murcia, atendiendo cada fase del proceso para obtener una fruta bien cuidada, fresca y con una recolección realizada en el momento adecuado.",
-  },
-  {
-    href: "/naranjas",
-    imageSrc: "/images/Naranja.svg",
-    imageAlt: "Naranja",
-    title: "Naranjas",
-    description:
-      "Nuestras naranjas forman parte de una producción agrícola trabajada con dedicación y compromiso con la calidad, ofreciendo fruta cultivada en Murcia con atención al detalle desde el campo.",
-  },
-  {
-    href: "/limones",
-    imageSrc: "/images/Limon.svg",
-    imageAlt: "Limón",
-    title: "Limones",
-    description:
-      "Cultivamos limones en un entorno agrícola marcado por la tradición y la experiencia en el campo, apostando por un producto de calidad y por una agricultura vinculada al territorio.",
-  },
-];
+export default async function NosotrosPage() {
+  const [page, fruits, siteSettings] = await Promise.all([
+    getNosotrosPage(),
+    getAllFruitProducts(),
+    getSiteSettings(),
+  ]);
 
-export default function NosotrosPage() {
+  const products = fruits.map((fruit: any) => ({
+    href: `/${fruit.slug.current}`,
+    imageSrc: urlFor(fruit.heroImage).url(),
+    imageAlt: fruit.heroImageAlt,
+    title: fruit.name,
+    description: fruit.nosotrosTeaser,
+  }));
+
   return (
     <main className="min-h-screen bg-cream">
       <Navbar />
@@ -86,16 +66,13 @@ export default function NosotrosPage() {
         aria-label="Sobre Agrícola Ardal"
         className="relative h-[55vh] w-full overflow-hidden md:h-[calc(100vh-72px)]"
       >
-        <Image
-          src="/images/Cerezos.png"
-          alt="Campo de cerezos en flor en Mula, Murcia"
-          fill
-          priority
-          className="object-cover"
-        />
+        <Image src={urlFor(page.heroImage).url()} alt={page.heroImageAlt} fill priority className="object-cover" />
         <div className="absolute inset-0 flex items-end">
-          <h1 className="animate-fade-in w-full px-4 pb-6 text-center font-heading text-[clamp(2.5rem,14vw,222px)] leading-[0.95] text-cream drop-shadow-[0_2px_12px_rgba(0,0,0,0.35)] md:whitespace-nowrap md:px-2 md:pb-10" style={{ animationDelay: '200ms' }}>
-            Sobre Agrícola Ardal
+          <h1
+            className="animate-fade-in w-full px-4 pb-6 text-center font-heading text-[clamp(2.5rem,14vw,222px)] leading-[0.95] text-cream drop-shadow-[0_2px_12px_rgba(0,0,0,0.35)] md:whitespace-nowrap md:px-2 md:pb-10"
+            style={{ animationDelay: '200ms' }}
+          >
+            {page.heroHeading}
           </h1>
         </div>
       </section>
@@ -103,24 +80,12 @@ export default function NosotrosPage() {
       <section className="bg-cream px-6 py-20 md:px-12 md:py-28">
         <div className="mx-auto grid max-w-[1600px] gap-10 md:grid-cols-[2fr_3fr] md:items-center md:gap-32">
           <div className="space-y-4 text-xl leading-relaxed text-ink md:max-w-md">
-            <p>
-              Agrícola Ardal es una empresa agrícola ubicada en Mula, Murcia,
-              centrada en el cultivo de fruta y en el valor de una producción
-              ligada al campo. Nuestra actividad nace del compromiso con la
-              tierra, con el trabajo bien hecho y con una forma de cultivar
-              basada en la experiencia y el respeto por cada cosecha.
-            </p>
-            <p>
-              Desde nuestra constitución como sociedad en 2021, desarrollamos
-              una actividad enfocada en el cultivo de albaricoques, nectarinas,
-              naranjas y limones, trabajando cada producto con atención,
-              seguimiento y criterio agrícola.
-            </p>
+            <PortableText value={page.introBody} />
           </div>
           <div className="relative aspect-[910/826] w-full overflow-hidden rounded-2xl">
             <Image
-              src="/images/cortando-limones.png"
-              alt="Recolección de limones a mano"
+              src={urlFor(page.introImage).url()}
+              alt={page.introImageAlt}
               fill
               className="object-cover"
               sizes="(min-width: 768px) 60vw, 100vw"
@@ -131,26 +96,19 @@ export default function NosotrosPage() {
 
       <section className="bg-cream px-6 py-20 md:px-12 md:py-28">
         <div className="mx-auto grid max-w-[1600px] gap-12 md:grid-cols-2 md:items-center md:gap-24">
-          <ParallaxImagePair />
+          <ParallaxImagePair
+            imageAUrl={urlFor(page.cuidadoImageA).url()}
+            imageAAlt={page.cuidadoImageAAlt}
+            imageBUrl={urlFor(page.cuidadoImageB).url()}
+            imageBAlt={page.cuidadoImageBAlt}
+          />
 
           <div className="space-y-6 md:pl-16 lg:pl-24">
             <h2 className="font-heading text-3xl leading-tight text-ink text-balance sm:text-4xl md:text-5xl">
-              Una agricultura basada en el cuidado y la constancia
+              {page.cuidadoHeading}
             </h2>
             <div className="space-y-4 text-xl leading-relaxed text-ink">
-              <p>
-                En Agrícola Ardal entendemos la agricultura como un proceso
-                que requiere tiempo, dedicación y conocimiento del terreno.
-                Cada cultivo tiene sus necesidades, sus ritmos y sus momentos,
-                y nuestro trabajo consiste en acompañar cada fase con el
-                cuidado necesario para obtener un producto de calidad.
-              </p>
-              <p>
-                No trabajamos desde la prisa, sino desde la constancia.
-                Apostamos por una producción bien gestionada, donde el
-                seguimiento del cultivo y el respeto por la tierra marcan la
-                diferencia.
-              </p>
+              <PortableText value={page.cuidadoBody} />
             </div>
           </div>
         </div>
@@ -159,8 +117,8 @@ export default function NosotrosPage() {
       <section className="relative mt-16 w-full bg-cream md:mt-32 lg:mt-44">
         <div className="relative w-full md:aspect-[1920/1280]">
           <Image
-            src="/images/mano-naranja.png"
-            alt="Mano cogiendo una naranja entre muchas"
+            src={urlFor(page.entornoBackgroundImage).url()}
+            alt={page.entornoBackgroundImageAlt}
             fill
             className="object-cover"
             sizes="100vw"
@@ -169,44 +127,14 @@ export default function NosotrosPage() {
           <div className="relative z-10 px-6 py-10 md:absolute md:inset-0 md:px-12 md:py-0">
             <div className="mx-auto grid max-w-[1600px] gap-6 md:grid-cols-2 md:items-start md:gap-24 md:pl-24 lg:pl-40">
               <h2 className="font-heading text-[36px] sm:text-[48px] md:text-[56px] lg:text-[64px] leading-tight text-ink text-balance md:-mt-16 md:pl-8 lg:-mt-24 lg:pl-16">
-                Un entorno agrícola con identidad propia
+                {page.entornoHeading}
               </h2>
               <div className="space-y-4 text-xl leading-relaxed text-ink md:-mt-16 md:max-w-xl md:pl-8 lg:-mt-24 lg:pl-16">
-                {/* Versión móvil — resumida */}
                 <div className="space-y-4 md:hidden">
-                  <p>
-                    Nuestra actividad se desarrolla en la zona del Ardal, en
-                    Mula, Murcia. Un entorno de secano donde cultivos
-                    tradicionales como el almendro o la vid marcan el paisaje.
-                  </p>
-                  <p>
-                    Este entorno define nuestra forma de trabajar el campo y
-                    refuerza nuestro compromiso con una agricultura conectada
-                    al territorio.
-                  </p>
+                  <PortableText value={page.entornoBodyMobile} />
                 </div>
-                {/* Versión desktop — completa */}
                 <div className="hidden md:block space-y-4">
-                  <p>
-                    Nuestra actividad se desarrolla en la zona del Ardal, en el
-                    término municipal de Mula, Murcia. Se trata de un entorno
-                    caracterizado por paisajes de secano, donde predominan
-                    cultivos tradicionales como el almendro, la vid o los
-                    cereales.
-                  </p>
-                  <p>
-                    Este paisaje agrícola define no solo el entorno, sino
-                    también la forma de trabajar el campo. Grandes extensiones,
-                    fincas abiertas y una relación directa con la tierra marcan
-                    el ritmo de la actividad agrícola en la zona.
-                  </p>
-                  <p>
-                    El Ardal es un ejemplo del carácter agrícola de Mula, donde
-                    la estacionalidad, el clima y la tradición siguen teniendo
-                    un papel clave en el desarrollo de los cultivos. Formar
-                    parte de este entorno refuerza nuestro compromiso con una
-                    agricultura conectada con el territorio.
-                  </p>
+                  <PortableText value={page.entornoBodyDesktop} />
                 </div>
               </div>
             </div>
@@ -218,8 +146,8 @@ export default function NosotrosPage() {
         <div className="mx-auto flex max-w-6xl flex-col items-center gap-12 md:gap-16">
           <div className="relative aspect-[1205/666] w-full overflow-hidden rounded-2xl">
             <Image
-              src="/images/albaricoque-arbol.png"
-              alt="Rama de albaricoques en el árbol"
+              src={urlFor(page.calidadImage).url()}
+              alt={page.calidadImageAlt}
               fill
               className="object-cover"
               sizes="(min-width: 768px) 1152px, 100vw"
@@ -228,70 +156,54 @@ export default function NosotrosPage() {
 
           <div className="w-full max-w-2xl space-y-6 text-center text-cream">
             <h2 className="font-heading text-[36px] sm:text-[48px] md:text-[56px] lg:text-[64px] leading-tight">
-              Calidad desde el origen
+              {page.calidadHeading}
             </h2>
-            <p className="text-xl leading-relaxed">
-              En Agrícola Ardal trabajamos con el objetivo de ofrecer fruta
-              cultivada en Murcia con un estándar de calidad basado en el
-              cuidado del producto desde el campo.
-            </p>
-            <p className="text-xl leading-relaxed">
-              Nuestro enfoque no se basa únicamente en producir, sino en
-              hacerlo bien: controlando el cultivo, respetando los tiempos de
-              cada fruta y manteniendo una línea de trabajo coherente con el
-              entorno agrícola en el que nos encontramos.
-            </p>
+            <div className="space-y-6 text-xl leading-relaxed">
+              <PortableText value={page.calidadBody} />
+            </div>
           </div>
         </div>
       </section>
 
-      <NosotrosProductosSection products={products} />
+      <NosotrosProductosSection heading={page.productosHeading} products={products} />
 
       <section className="bg-ink px-6 py-24 md:px-12 md:py-32">
         <div className="mx-auto flex max-w-5xl flex-col items-center gap-8 text-center text-ardalGreen md:gap-10">
           <div className="relative h-48 w-48 md:h-64 md:w-64">
-            <Image
-              src="/images/Group 798.svg"
-              alt=""
-              fill
-              aria-hidden
-              className="object-contain"
-            />
+            <Image src={urlFor(page.ctaDecorativeImage).url()} alt="" fill aria-hidden className="object-contain" />
           </div>
           <h2 className="font-heading text-4xl leading-tight md:whitespace-nowrap md:text-[96px]">
-            Agricultura con raíces en Murcia
+            {page.ctaHeading}
           </h2>
-          <p className="max-w-3xl text-lg leading-relaxed md:text-[24px]">
-            Agrícola Ardal representa una forma de entender la agricultura
-            desde el origen, el territorio y el compromiso con el trabajo bien
-            hecho. Desde Mula, desarrollamos una actividad agrícola que pone
-            en valor el campo y la calidad del producto.
-          </p>
+          <p className="max-w-3xl text-lg leading-relaxed md:text-[24px]">{page.ctaParagraph}</p>
 
           <div className="mt-4 flex flex-col items-stretch justify-center gap-4 sm:flex-row sm:gap-8 md:gap-12">
             <a
-              href={CONTACTO.telefonoHref}
+              href={siteSettings.contactoPhoneHref}
               className="inline-flex items-center justify-center gap-3 rounded-[20px] border border-[#FAF7F5]/50 bg-ardalGreenDeep px-8 py-5 text-lg font-medium text-ardalGreen transition hover:bg-ardalGreen hover:text-ardalGreenDeep"
             >
               <PhoneIcon />
-              {CONTACTO.telefono}
+              {siteSettings.contactoPhone}
             </a>
             <a
-              href={CONTACTO.direccionUrl}
+              href={siteSettings.contactoMapUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center gap-3 rounded-[20px] border border-[#FAF7F5]/50 bg-ardalGreenDeep px-8 py-5 text-lg font-medium text-ardalGreen transition hover:bg-ardalGreen hover:text-ardalGreenDeep"
             >
               <PinIcon />
-              <span className="text-left leading-tight whitespace-pre-line">
-                {CONTACTO.direccion}
-              </span>
+              <span className="text-left leading-tight whitespace-pre-line">{siteSettings.contactoAddress}</span>
             </a>
           </div>
         </div>
       </section>
 
-      <Footer />
+      <Footer
+        brandName={siteSettings.footerBrandName}
+        tagline={siteSettings.footerTagline}
+        kitDigitalImageUrl={urlFor(siteSettings.kitDigitalImage).url()}
+        kitDigitalImageAlt={siteSettings.kitDigitalImageAlt}
+      />
     </main>
   );
 }

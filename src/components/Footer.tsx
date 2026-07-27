@@ -1,7 +1,19 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
-export default function Footer() {
+type FooterProps = {
+  brandName?: string;
+  tagline?: string;
+  kitDigitalImageUrl?: string;
+  kitDigitalImageAlt?: string;
+};
+
+export default function Footer({
+  brandName = 'Agricola Ardal',
+  tagline = 'Comprometidos con la excelencia agricola y la tradicion murciana desde hace decadas.',
+  kitDigitalImageUrl = '/images/kit_digital.svg',
+  kitDigitalImageAlt = 'Kit Digital, red.es y financiacion por la Union Europea',
+}: FooterProps) {
   return (
     <footer className="bg-[#0B2407] text-blanco">
       <div className="mx-auto flex max-w-[1920px] flex-col gap-10 px-8 py-12 md:px-16 lg:min-h-[250px] lg:flex-row lg:items-center lg:gap-12 xl:px-20">
@@ -10,11 +22,11 @@ export default function Footer() {
             href="/"
             className="block font-heading text-[64px] leading-none text-[#8DC83E] md:text-[96px] lg:text-[110px] xl:text-[124px]"
           >
-            Agricola Ardal
+            {brandName}
           </Link>
 
           <p className="max-w-[250px] font-body text-[15px] leading-[1.15] text-blanco/90 md:text-[16px]">
-            Comprometidos con la excelencia agricola y la tradicion murciana desde hace decadas.
+            {tagline}
           </p>
         </div>
 
@@ -36,8 +48,8 @@ export default function Footer() {
 
           <div className="relative h-[52px] w-full max-w-[500px]">
             <Image
-              src="/images/kit_digital.svg"
-              alt="Kit Digital, red.es y financiacion por la Union Europea"
+              src={kitDigitalImageUrl}
+              alt={kitDigitalImageAlt}
               fill
               sizes="(max-width: 768px) 90vw, 500px"
               className="object-contain object-left"

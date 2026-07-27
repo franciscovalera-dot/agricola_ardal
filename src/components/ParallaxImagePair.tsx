@@ -5,7 +5,14 @@ import { useEffect, useRef, useState } from "react";
 
 const MAX_OFFSET_PX = 40;
 
-export function ParallaxImagePair() {
+type ParallaxImagePairProps = {
+  imageAUrl: string;
+  imageAAlt: string;
+  imageBUrl: string;
+  imageBAlt: string;
+};
+
+export function ParallaxImagePair({ imageAUrl, imageAAlt, imageBUrl, imageBAlt }: ParallaxImagePairProps) {
   const ref = useRef<HTMLDivElement>(null);
   const [progress, setProgress] = useState(0);
 
@@ -40,8 +47,8 @@ export function ParallaxImagePair() {
         style={{ transform: `translateY(${upOffset}px)` }}
       >
         <Image
-          src="/images/cesto-melocotones.png"
-          alt="Cesto con melocotones recién cosechados"
+          src={imageAUrl}
+          alt={imageAAlt}
           fill
           className="object-cover"
           sizes="(min-width: 768px) 25vw, 50vw"
@@ -52,8 +59,8 @@ export function ParallaxImagePair() {
         style={{ transform: `translateY(${downOffset}px)` }}
       >
         <Image
-          src="/images/flor-cerezo.png"
-          alt="Flor de cerezo en primavera"
+          src={imageBUrl}
+          alt={imageBAlt}
           fill
           className="object-cover"
           sizes="(min-width: 768px) 25vw, 50vw"

@@ -1,13 +1,13 @@
 import Image from "next/image";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { CONTACTO } from "@/lib/contacto";
+import { getContactoPage, getSiteSettings } from "../../../sanity/lib/fetchers";
+import { urlFor } from "../../../sanity/lib/image";
 
-export const metadata = {
-  title: "Contacto — Agrícola Ardal",
-  description:
-    "Ponte en contacto con Agrícola Ardal. Estamos en Mula, Murcia.",
-};
+export async function generateMetadata() {
+  const page = await getContactoPage();
+  return { title: page?.seoTitle, description: page?.seoDescription };
+}
 
 const PhoneIcon = () => (
   <svg
@@ -40,7 +40,9 @@ const PinIcon = () => (
   </svg>
 );
 
-export default function ContactoPage() {
+export default async function ContactoPage() {
+  const [page, siteSettings] = await Promise.all([getContactoPage(), getSiteSettings()]);
+
   return (
     <main className="min-h-screen bg-cream">
       <Navbar />
@@ -50,36 +52,29 @@ export default function ContactoPage() {
           <div className="relative grid gap-6 md:min-h-[90vh] md:grid-cols-2 md:items-stretch">
             <div className="flex flex-col rounded-3xl bg-sand p-6 pt-10 sm:p-8 sm:pt-14 md:p-12 md:pt-20 lg:p-16 lg:pt-28">
               <h1
-                className="animate-slide-in-left font-heading text-[34px] sm:text-[46px] md:text-[56px] lg:text-[64px] leading-[1.1] text-ink"
+                className="animate-slide-in-left font-heading text-[34px] sm:text-[46px] md:text-[56px] lg:text-[64px] leading-[1.1] text-ink whitespace-pre-line"
                 style={{ animationDelay: '0ms' }}
               >
-                Ponte en contacto
-                <br />
-                con Agrícola Ardal
+                {page.heading}
               </h1>
               <p
                 className="animate-slide-in-left mt-10 max-w-lg text-base leading-relaxed text-ink md:mt-12"
                 style={{ animationDelay: '150ms' }}
               >
-                Si deseas más información sobre nuestra actividad agrícola,
-                nuestros productos o nuestra empresa, puedes contactar con
-                nosotros a través de los datos disponibles en esta página. En
-                Agrícola Ardal estaremos encantados de atender cualquier
-                consulta relacionada con nuestra producción de albaricoques,
-                nectarinas, naranjas y limones cultivados en Murcia.
+                {page.paragraph}
               </p>
 
               <div className="mt-auto flex flex-col gap-3 pt-8 md:pt-12">
                 <a
-                  href={CONTACTO.telefonoHref}
+                  href={siteSettings.contactoPhoneHref}
                   className="animate-slide-in-left inline-flex w-full max-w-lg items-center gap-4 rounded-[20px] bg-paper px-5 py-4 text-base text-ink shadow-sm transition hover:shadow-md sm:px-8 sm:py-6 sm:text-lg"
                   style={{ animationDelay: '300ms' }}
                 >
                   <PhoneIcon />
-                  {CONTACTO.telefono}
+                  {siteSettings.contactoPhone}
                 </a>
                 <a
-                  href={CONTACTO.direccionUrl}
+                  href={siteSettings.contactoMapUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="animate-slide-in-left inline-flex w-full max-w-lg items-center gap-4 rounded-[20px] bg-paper px-5 py-4 text-base text-ink shadow-sm transition hover:shadow-md sm:px-8 sm:py-6 sm:text-lg"
@@ -87,7 +82,7 @@ export default function ContactoPage() {
                 >
                   <PinIcon />
                   <span className="text-left leading-tight whitespace-pre-line">
-                    {CONTACTO.direccion}
+                    {siteSettings.contactoAddress}
                   </span>
                 </a>
               </div>
@@ -95,8 +90,8 @@ export default function ContactoPage() {
 
             <div className="relative aspect-[4/3] w-full overflow-hidden rounded-3xl md:aspect-auto">
               <Image
-                src="/images/arbol-naranja.png"
-                alt="Naranjas en el árbol"
+                src={urlFor(page.image).url()}
+                alt={page.imageAlt}
                 fill
                 className="object-cover"
                 sizes="(min-width: 768px) 50vw, 100vw"
@@ -116,7 +111,12 @@ export default function ContactoPage() {
         </div>
       </section>
 
-      <Footer />
+      <Footer
+        brandName={siteSettings.footerBrandName}
+        tagline={siteSettings.footerTagline}
+        kitDigitalImageUrl={urlFor(siteSettings.kitDigitalImage).url()}
+        kitDigitalImageAlt={siteSettings.kitDigitalImageAlt}
+      />
     </main>
   );
 }
