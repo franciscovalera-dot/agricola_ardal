@@ -9,6 +9,8 @@ import { getFruitProductBySlug, getSiteSettings } from "../../../sanity/lib/fetc
 import { urlFor } from "../../../sanity/lib/image";
 import { PortableText } from "@portabletext/react";
 
+export const revalidate = 30;
+
 export async function generateMetadata() {
   const fruit = await getFruitProductBySlug("limones");
   return { title: fruit?.seoTitle, description: fruit?.seoDescription };

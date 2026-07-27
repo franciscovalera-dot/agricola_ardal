@@ -5,6 +5,8 @@ import ProductosGrid from "@/components/ProductosGrid";
 import { getAllFruitProducts, getProductosPage, getSiteSettings } from "../../../sanity/lib/fetchers";
 import { urlFor } from "../../../sanity/lib/image";
 
+export const revalidate = 30;
+
 export async function generateMetadata() {
   const page = await getProductosPage();
   return { title: page?.seoTitle, description: page?.seoDescription };

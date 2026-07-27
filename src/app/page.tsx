@@ -9,6 +9,8 @@ import { getAllFruitProducts, getHomePage, getSiteSettings } from '../../sanity/
 import { urlFor } from '../../sanity/lib/image';
 import { PortableText } from '@portabletext/react';
 
+export const revalidate = 30;
+
 export async function generateMetadata() {
   const home = await getHomePage();
   return { title: home?.seoTitle, description: home?.seoDescription };

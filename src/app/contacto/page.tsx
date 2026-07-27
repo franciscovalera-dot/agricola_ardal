@@ -4,6 +4,8 @@ import Footer from "@/components/Footer";
 import { getContactoPage, getSiteSettings } from "../../../sanity/lib/fetchers";
 import { urlFor } from "../../../sanity/lib/image";
 
+export const revalidate = 30;
+
 export async function generateMetadata() {
   const page = await getContactoPage();
   return { title: page?.seoTitle, description: page?.seoDescription };

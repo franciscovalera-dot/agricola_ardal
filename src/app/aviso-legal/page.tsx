@@ -4,6 +4,8 @@ import { getLegalPageBySlug, getSiteSettings } from '../../../sanity/lib/fetcher
 import { urlFor } from '../../../sanity/lib/image';
 import { LegalPortableText } from '../../../sanity/lib/LegalPortableText';
 
+export const revalidate = 30;
+
 export async function generateMetadata() {
   const page = await getLegalPageBySlug('aviso-legal');
   return { title: page?.seoTitle };

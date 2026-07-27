@@ -7,6 +7,8 @@ import { getAllFruitProducts, getNosotrosPage, getSiteSettings } from "../../../
 import { urlFor } from "../../../sanity/lib/image";
 import { PortableText } from "@portabletext/react";
 
+export const revalidate = 30;
+
 export async function generateMetadata() {
   const page = await getNosotrosPage();
   return { title: page?.seoTitle, description: page?.seoDescription };
