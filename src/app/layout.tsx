@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import './globals.css';
 import GTranslateWidget from '@/components/GTranslateWidget';
+import CookieBanner from '@/components/CookieBanner';
 
 export const metadata: Metadata = {
   title: 'Agrícola Ardal — Fruta cultivada en el campo de Murcia',
@@ -25,6 +26,7 @@ export default function RootLayout({
       <body className="font-body bg-blanco text-negro antialiased">
         {children}
         <GTranslateWidget />
+        <CookieBanner />
       </body>
     </html>
   );
